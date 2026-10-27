@@ -2,7 +2,7 @@
   "tests": [
     {
       "id": "escola-institucional",
-      "page": "/escola/",
+      "page": "/",
       "split": { "a": 50, "b": 50 }
     }
   ]

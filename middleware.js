@@ -1,8 +1,8 @@
 /**
  * Divisão dos testes A/B na Vercel (Routing Middleware). Roda antes de a
  * Vercel servir cada página e decide, com `ab/roteamento.js`, qual arquivo
- * entregar. A URL do navegador não muda: quem cai na B continua vendo
- * `/escola/`, não `/escola/b.html`.
+ * entregar. A URL do navegador não muda: quem cai na B da página inicial
+ * continua vendo `/`, não `/b.html`.
  *
  * Os testes ligados vêm do experiments.json, lido no deploy. Mudar um teste é
  * mudar o JSON e publicar; este arquivo não precisa ser editado.

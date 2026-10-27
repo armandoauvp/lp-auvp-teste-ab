@@ -4,14 +4,15 @@ O repositório gera **um único site estático** em `dist/`, com estes endereço
 
 | Caminho           | Origem                                                                             |
 | ----------------- | ---------------------------------------------------------------------------------- |
-| `/`               | `indice/index.html`, o índice                                                      |
+| `/`               | `escola/`, a LP da Escola com Vite (em teste A/B com a institucional)              |
 | `/institucional/` | `institucional/`, Vite + React                                                     |
-| `/escola/`        | `escola/`, a LP da Escola com Vite                                                 |
+| `/escola/`        | redireciona para `/` (endereço antigo da Escola)                                   |
 | `/auvp-sempre/`   | `auvp-sempre/`, HTML puro copiado                                                  |
 | `/<pagina>/`      | as demais páginas clonadas do WordPress, HTML puro copiado, com a base em `comum/` |
 
 A mesma pasta serve o **GitHub Pages** e a **Vercel**. Quem monta tudo é
-`scripts/build.mjs`, chamado por `npm run build` na raiz.
+`scripts/build.mjs`, chamado por `npm run build` na raiz. A lista completa, com
+os links da homologação, está no [README](../README.md).
 
 ---
 

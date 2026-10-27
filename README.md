@@ -1,22 +1,30 @@
 # AUVP · Páginas
 
 Repositório das páginas da **AUVP Escola de Investimentos**, publicadas juntas
-num único site estático:
+num único site estático. Homologação: **<https://escola-homolog.vercel.app/>**.
 
-| Caminho                     | Pasta                      | O que é                                    |
-| --------------------------- | -------------------------- | ------------------------------------------ |
-| `/`                         | `indice/`                  | Índice com links para as páginas           |
-| `/institucional/`           | `institucional/`           | Página institucional (Vite + React)        |
-| `/escola/`                  | `escola/`                  | Landing page da Escola (Vite + Tailwind 3) |
-| `/auvp-sempre/`             | `auvp-sempre/`             | Página da AUVP Sempre (HTML puro)          |
-| `/auvp-internacional/`      | `auvp-internacional/`      | AUVP Internacional (HTML puro)             |
-| `/nosso-processo/`          | `nosso-processo/`          | Nosso processo (HTML puro)                 |
-| `/quem-somos/`              | `quem-somos/`              | Quem somos (HTML puro)                     |
-| `/obrigado-aprovado/`       | `obrigado-aprovado/`       | Obrigado (aprovado) (HTML puro)            |
-| `/obrigado-auvp-analitica/` | `obrigado-auvp-analitica/` | Obrigado AUVP Analítica (HTML puro)        |
-| `/resolva-aqui/`            | `resolva-aqui/`            | Resolva aqui (HTML puro)                   |
-| `/termos-de-uso/`           | `termos-de-uso/`           | Termos de uso (HTML puro)                  |
-| `/politica-de-privacidade/` | `politica-de-privacidade/` | Política de privacidade (HTML puro)        |
+| Endereço                                                                                | Pasta                      | O que é                                                            |
+| --------------------------------------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------ |
+| [/](https://escola-homolog.vercel.app/)                                                 | `escola/`                  | LP da Escola (Vite + Tailwind 3). Em teste A/B com a institucional |
+| [/institucional/](https://escola-homolog.vercel.app/institucional/)                     | `institucional/`           | Página institucional (Vite + React)                                |
+| [/auvp-sempre/](https://escola-homolog.vercel.app/auvp-sempre/)                         | `auvp-sempre/`             | AUVP Sempre                                                        |
+| [/auvp-internacional/](https://escola-homolog.vercel.app/auvp-internacional/)           | `auvp-internacional/`      | AUVP Internacional                                                 |
+| [/nosso-processo/](https://escola-homolog.vercel.app/nosso-processo/)                   | `nosso-processo/`          | Nosso processo                                                     |
+| [/quem-somos/](https://escola-homolog.vercel.app/quem-somos/)                           | `quem-somos/`              | Quem somos                                                         |
+| [/obrigado-aprovado/](https://escola-homolog.vercel.app/obrigado-aprovado/)             | `obrigado-aprovado/`       | Obrigado (aprovado)                                                |
+| [/obrigado-auvp-analitica/](https://escola-homolog.vercel.app/obrigado-auvp-analitica/) | `obrigado-auvp-analitica/` | Obrigado AUVP Analítica                                            |
+| [/resolva-aqui/](https://escola-homolog.vercel.app/resolva-aqui/)                       | `resolva-aqui/`            | Resolva aqui                                                       |
+| [/termos-de-uso/](https://escola-homolog.vercel.app/termos-de-uso/)                     | `termos-de-uso/`           | Termos de uso                                                      |
+| [/politica-de-privacidade/](https://escola-homolog.vercel.app/politica-de-privacidade/) | `politica-de-privacidade/` | Política de privacidade                                            |
+
+A raiz é a LP da Escola, que antes ficava em `/escola/`; links antigos para
+`/escola/` redirecionam para `/`. Na raiz roda o teste A/B
+`escola-institucional`: metade das pessoas vê a Escola e metade a institucional.
+Para ver uma versão específica, use [/?ab=a](https://escola-homolog.vercel.app/?ab=a) (Escola) ou
+[/?ab=b](https://escola-homolog.vercel.app/?ab=b) (institucional). Ver [docs/AB-TESTING.md](docs/AB-TESTING.md).
+
+As páginas de `/auvp-sempre/` em diante são HTML puro, clonadas do WordPress
+(auvp.com.br).
 
 O resto deste README trata da página institucional. A LP da Escola é HTML
 editado direto em `escola/index.html`; os masters das imagens dela estão em
@@ -31,8 +39,8 @@ título por `comum/` (`base.css`, `site.js`, `img/`).
 **Testes A/B.** `experiments.json` lista os testes ligados; a versão B de uma
 página fica em `b.html`, na mesma pasta. Na Vercel, `middleware.js` divide o
 tráfego e guarda a versão de cada pessoa no cookie `ab_<id>`. O primeiro teste,
-`escola-institucional`, põe a LP da Escola (A) contra a institucional (B) em
-`/escola/`, 50/50. Ver **[docs/AB-TESTING.md](docs/AB-TESTING.md)**.
+`escola-institucional`, põe a LP da Escola (A) contra a institucional (B) na
+raiz, 50/50. Ver **[docs/AB-TESTING.md](docs/AB-TESTING.md)**.
 
 ## Página institucional
 

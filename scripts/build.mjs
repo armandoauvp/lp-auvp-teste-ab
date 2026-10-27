@@ -1,9 +1,11 @@
 /**
  * Monta o site completo em `dist/`:
  *
- *     dist/index.html        índice (indice/index.html)
+ *     dist/index.html        LP da Escola (Vite), com assets/, fonts/ e
+ *                            ~partytown/ na raiz
+ *     dist/escola/           só um redirecionamento para a raiz, para
+ *                            links antigos (a Vercel redireciona antes)
  *     dist/institucional/    página institucional (Vite + React)
- *     dist/escola/           LP da Escola (Vite)
  *     dist/auvp-sempre/      página da AUVP Sempre (HTML puro, copiada)
  *     dist/<pagina>/         demais páginas clonadas do WordPress (idem),
  *                            com a base comum em dist/comum/
@@ -29,15 +31,7 @@
  * Ver docs/DEPLOY.md.
  */
 import { spawnSync } from "node:child_process";
-import {
-  copyFile,
-  cp,
-  mkdir,
-  readFile,
-  readdir,
-  rm,
-  writeFile,
-} from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import {
@@ -67,7 +61,7 @@ const siteUrl = (
  */
 const versoesMontadas = {
   // Teste "escola-institucional": a LP da Escola (A) contra a institucional (B).
-  "/escola/": "institucional",
+  "/": "institucional",
 };
 
 function falhar(titulo, erros) {
@@ -113,9 +107,11 @@ run("institucional", {
   ...(siteUrl && { VITE_SITE_URL: `${siteUrl}/institucional` }),
 });
 
+// A Escola é a página da raiz. Vai depois da institucional porque não limpa a
+// pasta de saída (emptyOutDir: false no vite.config.js dela).
 run("escola", {
-  BASE_PATH: `${base}/escola/`,
-  BUILD_OUT_DIR: path.join(dist, "escola"),
+  BASE_PATH: `${base}/`,
+  BUILD_OUT_DIR: dist,
 });
 
 await mkdir(dist, { recursive: true });
@@ -138,9 +134,25 @@ const paginasEstaticas = [
 for (const pasta of paginasEstaticas) {
   await cp(path.join(root, pasta), path.join(dist, pasta), { recursive: true });
 }
-await copyFile(
-  path.join(root, "indice/index.html"),
-  path.join(dist, "index.html"),
+// A Escola morava em /escola/ e passou para a raiz. Na Vercel, o vercel.json
+// redireciona antes de chegar aqui; este arquivo cobre o GitHub Pages.
+await mkdir(path.join(dist, "escola"), { recursive: true });
+await writeFile(
+  path.join(dist, "escola/index.html"),
+  `<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>AUVP Escola</title>
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content="0; url=../" />
+    <script>location.replace("../" + location.search + location.hash);</script>
+  </head>
+  <body>
+    <p>A página da Escola mudou para <a href="../">o início do site</a>.</p>
+  </body>
+</html>
+`,
 );
 // O Pages processa o site com Jekyll por padrão, e o Jekyll ignora pastas
 // iniciadas por underscore. Nada aqui depende disso hoje, mas desligar evita

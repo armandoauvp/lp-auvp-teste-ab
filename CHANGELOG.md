@@ -11,8 +11,14 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
   na divisão e redirecionamento de `b.html` para a página. O build falha se um
   teste não tiver `b.html`, se um `b.html` não tiver teste ou se o canonical
   das duas versões for diferente. Ver [docs/AB-TESTING.md](docs/AB-TESTING.md).
-- **Primeiro teste, `escola-institucional`:** em `/escola/`, metade vê a LP da
+- **Primeiro teste, `escola-institucional`:** na raiz, metade vê a LP da
   Escola (A) e metade a institucional (B), por 30 dias.
+
+### Alterado (raiz)
+
+- **A LP da Escola passa para a raiz do site (`/`)** e o índice de páginas
+  (`indice/`) sai. `/escola/` redireciona para `/`. A lista de páginas, com os
+  links da homologação, fica no README.
 
 ### Alterado
 

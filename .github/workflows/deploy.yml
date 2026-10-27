@@ -41,7 +41,7 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      # Gera dist/ com o índice, institucional/ e escola/. O .nojekyll também
+      # Gera dist/ com a Escola na raiz, institucional/ e as demais páginas. O .nojekyll também
       # sai daqui. Ver scripts/build.mjs.
       - name: Build
         env:

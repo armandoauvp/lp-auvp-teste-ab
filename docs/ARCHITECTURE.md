@@ -1,16 +1,15 @@
 # Arquitetura
 
 Este documento trata da página institucional (`institucional/`). O repositório
-também abriga a LP da Escola (`escola/`, HTML + Vite + Tailwind 3) e um índice
-(`indice/`), além da página da AUVP Sempre (`auvp-sempre/`) e das demais páginas
+também abriga a LP da Escola (`escola/`, HTML + Vite + Tailwind 3), publicada
+na raiz do site, além da página da AUVP Sempre (`auvp-sempre/`) e das demais páginas
 clonadas do WordPress, todas em HTML puro e copiadas sem build (base comum em
 `comum/`). Todas saem num único `dist/`; ver [docs/DEPLOY.md](DEPLOY.md).
 
 ```
 /
 ├── institucional/      página institucional (Vite + React)
-├── escola/             LP da Escola (Vite, HTML puro)
-├── indice/             índice publicado na raiz do site
+├── escola/             LP da Escola (Vite, HTML puro), publicada na raiz
 ├── scripts/            build.mjs, preview.mjs, esquadro.mjs
 ├── docs/, acervo/
 └── package.json        npm workspaces: um `npm ci` instala tudo
@@ -119,7 +118,7 @@ SVG degrada o traço fino da serifa.
 
 **Institucional como versão B da Escola, sem cópia.** No teste A/B
 `escola-institucional`, o `scripts/build.mjs` copia o `index.html` já
-pré-renderizado da institucional para `dist/escola/b.html`. Os assets ficam em
+pré-renderizado da institucional para `dist/b.html` (a B da raiz). Os assets ficam em
 `/institucional/` (o Vite gera caminhos absolutos pela `BASE_PATH`), então a
 mesma página funciona nos dois endereços sem segundo build. O canonical da cópia
 é trocado pelo da Escola, como pede a regra do teste. Ver
