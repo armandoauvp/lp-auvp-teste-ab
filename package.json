@@ -13,7 +13,7 @@
     "dev:escola": "npm run dev -w escola",
     "build": "node scripts/build.mjs",
     "preview": "node scripts/preview.mjs",
-    "test": "npm test -w escola",
+    "test": "node --test ab/*.test.js && npm test -w escola",
     "typecheck": "npm run typecheck -w institucional",
     "lint": "npm run lint -w institucional",
     "format": "prettier --write .",

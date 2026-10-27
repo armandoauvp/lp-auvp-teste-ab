@@ -4,6 +4,16 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Não publicado]
 
+### Adicionado (testes A/B)
+
+- **Testes A/B por `experiments.json`**, divididos na Vercel por
+  `middleware.js`: cookie `ab_<id>`, `?ab=a|b` para ver uma versão sem entrar
+  na divisão e redirecionamento de `b.html` para a página. O build falha se um
+  teste não tiver `b.html`, se um `b.html` não tiver teste ou se o canonical
+  das duas versões for diferente. Ver [docs/AB-TESTING.md](docs/AB-TESTING.md).
+- **Primeiro teste, `escola-institucional`:** em `/escola/`, metade vê a LP da
+  Escola (A) e metade a institucional (B), por 30 dias.
+
 ### Alterado
 
 - **Repositório unificado com a LP da Escola.** O site publicado passa a ter três

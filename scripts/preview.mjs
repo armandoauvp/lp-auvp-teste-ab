@@ -6,11 +6,15 @@
  *
  * Serve na raiz, então o build precisa ter sido feito sem `SITE_BASE_PATH`.
  * Imita o que Pages e Vercel fazem: `/pasta/` responde com `pasta/index.html`.
+ * Imita também a divisão dos testes A/B que o `middleware.js` faz na Vercel,
+ * com o experiments.json da raiz: cookie `ab_<id>`, `?ab=a|b` e o
+ * redirecionamento de `b.html`. Para cair de novo no sorteio, apague o cookie.
  */
 import { createReadStream } from "node:fs";
-import { stat } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import { createServer } from "node:http";
 import path from "node:path";
+import { decidir } from "../ab/roteamento.js";
 
 const dist = path.resolve(
   process.argv[2] ?? path.join(import.meta.dirname, "../dist"),
@@ -41,8 +45,23 @@ async function resolveFile(urlPath) {
   return null;
 }
 
+const experimentos = JSON.parse(
+  await readFile(path.join(import.meta.dirname, "../experiments.json"), "utf8"),
+);
+
 createServer(async (req, res) => {
-  const { pathname } = new URL(req.url, "http://localhost");
+  const { pathname, search } = new URL(req.url, "http://localhost");
+  const decisao = decidir({
+    pathname,
+    search,
+    cookies: req.headers.cookie,
+    experimentos,
+    seguro: false,
+  });
+  if (decisao.acao === "redirecionar") {
+    res.writeHead(307, { Location: decisao.destino }).end();
+    return;
+  }
   // Pasta sem barra final: redireciona, como os hosts fazem.
   const info = await stat(path.join(dist, decodeURIComponent(pathname))).catch(
     () => null,
@@ -51,12 +70,15 @@ createServer(async (req, res) => {
     res.writeHead(301, { Location: `${pathname}/` }).end();
     return;
   }
-  const file = await resolveFile(pathname);
+  const file = await resolveFile(
+    decisao.acao === "servir" ? decisao.arquivo : pathname,
+  );
   if (!file) {
     res.writeHead(404, { "Content-Type": "text/plain" }).end("404");
     return;
   }
   res.writeHead(200, {
+    ...(decisao.cookie && { "Set-Cookie": decisao.cookie }),
     "Content-Type":
       types[path.extname(file).toLowerCase()] ?? "application/octet-stream",
   });

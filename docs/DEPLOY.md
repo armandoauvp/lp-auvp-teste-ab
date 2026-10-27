@@ -88,6 +88,11 @@ Para fixar outra (domínio próprio, por exemplo), crie a variável `SITE_URL` e
 
 Cada PR ganha um preview da Vercel com todas as páginas.
 
+**Testes A/B só funcionam na Vercel.** O `middleware.js` da raiz é um Routing
+Middleware: a Vercel o detecta sozinha, sem configuração, e ele divide o
+tráfego das páginas listadas em `experiments.json`. No GitHub Pages não há
+servidor para isso, e todo mundo vê a versão A. Ver [AB-TESTING.md](AB-TESTING.md).
+
 ---
 
 ## O que faz a hospedagem estática funcionar

@@ -37,5 +37,7 @@ jobs:
       - name: Testes da Escola
         run: npm test
 
+      # Também confere os testes A/B (experiments.json, b.html e canonical).
+      # Ver docs/AB-TESTING.md.
       - name: Build
         run: npm run build

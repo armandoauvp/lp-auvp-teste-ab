@@ -26,8 +26,13 @@ A página da AUVP Sempre e as demais páginas clonadas do WordPress
 (auvp.com.br) são HTML puro, sem build: cada uma tem `index.html`, `style.css`,
 às vezes `script.js`, e as imagens em `img/`. O build só copia as pastas. As
 páginas vindas do WordPress compartilham cabeçalho, rodapé, logos e a faixa de
-título por `comum/` (`base.css`, `site.js`, `img/`). A estrutura segue as regras
-de teste A/B (versão B em `b.html` na mesma pasta, mesmo `<link rel="canonical">`).
+título por `comum/` (`base.css`, `site.js`, `img/`).
+
+**Testes A/B.** `experiments.json` lista os testes ligados; a versão B de uma
+página fica em `b.html`, na mesma pasta. Na Vercel, `middleware.js` divide o
+tráfego e guarda a versão de cada pessoa no cookie `ab_<id>`. O primeiro teste,
+`escola-institucional`, põe a LP da Escola (A) contra a institucional (B) em
+`/escola/`, 50/50. Ver **[docs/AB-TESTING.md](docs/AB-TESTING.md)**.
 
 ## Página institucional
 
@@ -105,6 +110,7 @@ com o racional em **[docs/BRAND.md](docs/BRAND.md)**.
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)   | Stack, estrutura e decisões técnicas                          |
 | [docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md) | Compromissos de acessibilidade e como verificar               |
 | [docs/DEPLOY.md](docs/DEPLOY.md)               | Publicação e checklist de go-live                             |
+| [docs/AB-TESTING.md](docs/AB-TESTING.md)       | Testes A/B: como ligar, ver e encerrar                        |
 | [CONTRIBUTING.md](CONTRIBUTING.md)             | Fluxo de trabalho, branches e revisão                         |
 | [CHANGELOG.md](CHANGELOG.md)                   | Histórico de mudanças                                         |
 

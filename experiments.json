@@ -1,0 +1,9 @@
+{
+  "tests": [
+    {
+      "id": "escola-institucional",
+      "page": "/escola/",
+      "split": { "a": 50, "b": 50 }
+    }
+  ]
+}

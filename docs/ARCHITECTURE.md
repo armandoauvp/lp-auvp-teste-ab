@@ -116,3 +116,11 @@ do banco de imagens, e o que falta fica visível para todo mundo. Ver
 **Logo trocado por contraste, não por CSS.** O cabeçalho troca entre o SVG preto
 e o branco conforme esteja sobre o hero escuro ou sobre papel. Filtro CSS sobre
 SVG degrada o traço fino da serifa.
+
+**Institucional como versão B da Escola, sem cópia.** No teste A/B
+`escola-institucional`, o `scripts/build.mjs` copia o `index.html` já
+pré-renderizado da institucional para `dist/escola/b.html`. Os assets ficam em
+`/institucional/` (o Vite gera caminhos absolutos pela `BASE_PATH`), então a
+mesma página funciona nos dois endereços sem segundo build. O canonical da cópia
+é trocado pelo da Escola, como pede a regra do teste. Ver
+[AB-TESTING.md](AB-TESTING.md).
