@@ -1459,6 +1459,26 @@ details[open] p { max-height: 1000px; opacity: 1; transform: translateY(0); tran
 /* A arte dos ETFs é a screenshot da página inteira, não uma capa: mostra o
    topo, como a Central faz com screenshots de LP. */
 .news-card-img--topo { object-position: top; }
+/* Capa tipográfica para novidade que ainda não tem arte: o nome em Anek
+   Latin dourada sobre tinta. Mesmo tamanho da imagem (.news-card-img). */
+.news-card-capa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    background:
+        radial-gradient(120% 140% at 85% 0%, rgba(239, 191, 78, 0.22) 0%, rgba(239, 191, 78, 0) 55%),
+        #0a0a0a;
+}
+.news-card-capa-texto {
+    font-family: var(--font-title) !important;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #efbf4e;
+    text-align: center;
+}
 .news-card-date {
     display: block;
     margin-bottom: 10px;
@@ -1655,13 +1675,21 @@ details[open] p { max-height: 1000px; opacity: 1; transform: translateY(0); tran
         flex-direction: row;
         gap: 0;
     }
-    /* Cinco colunas iguais com o nó encostado à esquerda de cada uma: o
-       trilho vai do centro do 1º nó ao centro do 5º, ou seja, 80% da régua. */
+    /* Colunas iguais com o nó encostado à esquerda de cada uma: o trilho vai
+       do centro do 1º nó ao centro do último, ou seja, (n - 1) / n da régua.
+       O n sai da própria lista, então acrescentar ou tirar uma etapa no HTML
+       não exige mexer aqui. */
+    .news-roadmap { --rm-trilho: 80%; }
+    .news-roadmap:has(> .news-rm-step:nth-child(2):last-child) { --rm-trilho: 50%; }
+    .news-roadmap:has(> .news-rm-step:nth-child(3):last-child) { --rm-trilho: 66.667%; }
+    .news-roadmap:has(> .news-rm-step:nth-child(4):last-child) { --rm-trilho: 75%; }
+    .news-roadmap:has(> .news-rm-step:nth-child(5):last-child) { --rm-trilho: 80%; }
+    .news-roadmap:has(> .news-rm-step:nth-child(6):last-child) { --rm-trilho: 83.333%; }
     .news-roadmap::before {
         left: 7px;
         top: 7px;
         bottom: auto;
-        width: 80%;
+        width: var(--rm-trilho);
         height: 1px;
     }
     .news-roadmap::after {
@@ -1672,7 +1700,7 @@ details[open] p { max-height: 1000px; opacity: 1; transform: translateY(0); tran
         background: linear-gradient(90deg, rgba(143, 106, 20, 0.6) 0%, rgba(143, 106, 20, 0.15) 100%);
         transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
     }
-    .news-roadmap.is-visible::after { width: 80%; height: 1px; }
+    .news-roadmap.is-visible::after { width: var(--rm-trilho); height: 1px; }
 
     .news-rm-step {
         flex: 1;
