@@ -35,7 +35,7 @@ homologação.
 Publicado pelo workflow `.github/workflows/deploy.yml` a cada push na `main`.
 
 **Endereço:** `https://<dono>.github.io/<repo>/`. Hoje,
-<https://produtosauvp.github.io/lp-auvp-institucional/>.
+<https://auvp.github.io/lp-escola-homolog/>.
 
 ### Ativação (uma vez só)
 
@@ -66,10 +66,10 @@ O workflow pergunta ao próprio GitHub:
 
 E o `scripts/build.mjs` repassa a cada página o seu pedaço:
 
-| Variável         | Vai para                                        | Exemplo no Pages                                |
-| ---------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `SITE_BASE_PATH` | `base` do Vite no institucional e na Escola     | `/lp-auvp-institucional/institucional/`         |
-| `SITE_URL`       | `VITE_SITE_URL`: canonical, OG, sitemap, robots | `https://…/lp-auvp-institucional/institucional` |
+| Variável         | Vai para                                        | Exemplo no Pages                            |
+| ---------------- | ----------------------------------------------- | ------------------------------------------- |
+| `SITE_BASE_PATH` | `base` do Vite no institucional e na Escola     | `/lp-escola-homolog/institucional/`         |
+| `SITE_URL`       | `VITE_SITE_URL`: canonical, OG, sitemap, robots | `https://…/lp-escola-homolog/institucional` |
 
 Nada fica fixado no código. No dia em que um domínio próprio for configurado, a
 action passa a devolver a raiz e o build se ajusta sozinho.
@@ -174,17 +174,17 @@ Para reproduzir o subcaminho do Pages, gere com `SITE_BASE_PATH` e sirva a
 pasta dentro de um diretório com o nome do repositório:
 
 ```bash
-SITE_BASE_PATH=/lp-auvp-institucional npm run build
-mkdir -p /tmp/pages && rm -rf /tmp/pages/lp-auvp-institucional
-cp -r dist /tmp/pages/lp-auvp-institucional
+SITE_BASE_PATH=/lp-escola-homolog npm run build
+mkdir -p /tmp/pages && rm -rf /tmp/pages/lp-escola-homolog
+cp -r dist /tmp/pages/lp-escola-homolog
 npm run preview -- /tmp/pages
 ```
 
-Abra <http://localhost:4173/lp-auvp-institucional/> e confira o console do
+Abra <http://localhost:4173/lp-escola-homolog/> e confira o console do
 navegador: **qualquer 404 ali é um 404 em produção.**
 
 > No Git Bash do Windows, prefixe com `MSYS_NO_PATHCONV=1`: sem isso o shell
-> converte `/lp-auvp-institucional` num caminho de disco antes de repassar.
+> converte `/lp-escola-homolog` num caminho de disco antes de repassar.
 
 ---
 

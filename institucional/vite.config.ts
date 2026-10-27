@@ -15,7 +15,7 @@ import { defineConfig } from "vite";
  */
 process.env.VITE_SITE_URL = (
   process.env.VITE_SITE_URL ||
-  "https://produtosauvp.github.io/lp-auvp-institucional/institucional"
+  "https://auvp.github.io/lp-escola-homolog/institucional"
 ).replace(/\/$/, "");
 
 export default defineConfig({

@@ -2,6 +2,7 @@
 
 Repositório das páginas da **AUVP Escola de Investimentos**, publicadas juntas
 num único site estático. Homologação: **<https://escola-homolog.vercel.app/>**.
+Repositório: [auvp/lp-escola-homolog](https://github.com/auvp/lp-escola-homolog).
 
 | Endereço                                                                                | Pasta                      | O que é                                                            |
 | --------------------------------------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------ |
@@ -128,7 +129,7 @@ O mesmo `dist/` serve dois destinos:
 
 - **GitHub Pages**, a cada push na `main`, pelo workflow
   `.github/workflows/deploy.yml`.
-  **<https://produtosauvp.github.io/lp-auvp-institucional/>**
+  **<https://auvp.github.io/lp-escola-homolog/>**
 - **Vercel**, configurada por `vercel.json`: basta importar o repositório.
 
 No Pages o site é servido sob subcaminho, então o build recebe o prefixo do
