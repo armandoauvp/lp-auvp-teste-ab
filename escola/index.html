@@ -138,25 +138,15 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
 
-    <!-- Fontes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fontes: Satoshi (texto) e Anek Latin (títulos), servidas pelo site.
+         Os @font-face e as reservas de medida estão em src/style.css. -->
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@300;400;500;600;700;800&display=swap"
-      as="style"
+      href="/fonts/anek-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media = 'all'"
-    />
-    <noscript
-      ><link
-        href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    /></noscript>
     <link
       rel="preload"
       href="./fonts/Satoshi-Variable.woff2"
@@ -301,7 +291,7 @@
               return false;
             "
             class="nav-link tw-font-medium tw-text-[17px]"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Principal</a
           >
           <!-- Só a partir de xl: abaixo disso o menu não comporta mais um
@@ -310,32 +300,32 @@
           <a
             href="#novidades"
             class="nav-link tw-font-medium tw-text-[17px] tw-hidden xl:tw-inline-block"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Novidades</a
           >
           <a
             href="https://www.auvp.com.br/nosso-processo/"
             class="nav-link tw-font-medium tw-text-[17px]"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Nosso processo</a
           >
           <a
             href="#faq"
             class="nav-link tw-font-medium tw-text-[17px]"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Dúvidas frequentes</a
           >
           <a
             href="https://auvpcapital.com.br/"
             class="nav-link tw-font-medium tw-text-[17px]"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Consultoria especializada</a
           >
           <a
             href="https://www.aulasauvp.com.br/start"
             target="_blank"
             class="tw-border tw-border-solid tw-border-white tw-px-8 tw-py-3 tw-text-white tw-bg-transparent hover:tw-bg-white hover:tw-text-black tw-font-semibold tw-text-[17px] tw-transition-colors tw-no-underline"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Área do aluno</a
           >
         </nav>
@@ -377,7 +367,7 @@
               return false;
             "
             class="tw-text-white hover:tw-text-[#efbf4e] tw-font-medium tw-text-[17px] tw-no-underline"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Principal</a
           >
           <a
@@ -386,13 +376,13 @@
               document.getElementById('mobile-menu').classList.add('tw-hidden')
             "
             class="tw-text-white hover:tw-text-[#efbf4e] tw-font-medium tw-text-[17px] tw-no-underline"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Novidades</a
           >
           <a
             href="https://www.auvp.com.br/nosso-processo/"
             class="tw-text-white hover:tw-text-[#efbf4e] tw-font-medium tw-text-[17px] tw-no-underline"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Nosso processo</a
           >
           <a
@@ -401,20 +391,20 @@
               document.getElementById('mobile-menu').classList.add('tw-hidden')
             "
             class="tw-text-white hover:tw-text-[#efbf4e] tw-font-medium tw-text-[17px] tw-no-underline"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Dúvidas frequentes</a
           >
           <a
             href="https://auvpcapital.com.br/"
             class="tw-text-white hover:tw-text-[#efbf4e] tw-font-medium tw-text-[17px] tw-no-underline"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Consultoria especializada</a
           >
           <a
             href="https://www.aulasauvp.com.br/start"
             target="_blank"
             class="tw-border tw-border-solid tw-border-white tw-px-6 tw-py-3 tw-text-white tw-text-center tw-bg-transparent hover:tw-bg-white hover:tw-text-black tw-font-semibold tw-text-[17px] tw-transition-colors tw-no-underline tw-mt-2"
-            style="font-family: &quot;Satoshi&quot;, sans-serif"
+            style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
             >Área do aluno</a
           >
         </nav>
@@ -872,7 +862,7 @@
               href="https://form.auvp.com.br/to/DSo4JgH8"
               id="checkout-cta"
               class="tw-bg-white hover:tw-bg-gray-200 tw-text-black tw-font-bold tw-py-4 tw-px-8 tw-rounded tw-w-full tw-text-center tw-transition-colors tw-no-underline tw-text-[15px] md:tw-text-[16px] tw-shadow-sm hover:-tw-translate-y-1"
-              style="font-family: &quot;Satoshi&quot;, sans-serif"
+              style="font-family: &quot;Satoshi&quot;, &quot;Satoshi Fallback&quot;, sans-serif"
               >QUERO FAZER PARTE</a
             >
           </div>
@@ -2100,7 +2090,7 @@
     <section class="dobra-alterna auvp-section">
       <div class="auvp-container tw-text-center" style="margin-bottom: 40px">
         <span
-          class="tw-text-[#efbf4e] tw-font-semibold tw-text-sm tw-uppercase tw-tracking-widest"
+          class="tw-text-[#8a6a1c] tw-font-semibold tw-text-sm tw-uppercase tw-tracking-widest"
           >Palestras</span
         >
         <h2
@@ -2147,7 +2137,7 @@
               href="https://api.whatsapp.com/send?phone=556234139882&text=Opa,%20eu%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20as%20palestras%20do%20Raul%20Sena."
               target="_blank"
               rel="noopener"
-              class="tw-border tw-border-solid tw-border-[#00992b] tw-text-[#00992b] tw-px-5 tw-py-2 tw-font-bold tw-text-[11px] tw-tracking-widest tw-uppercase tw-no-underline hover:tw-bg-[#00992b] hover:tw-text-white tw-transition-colors tw-inline-block tw-rounded-full"
+              class="tw-border tw-border-solid tw-border-[#008225] tw-text-[#008225] tw-px-5 tw-py-2 tw-font-bold tw-text-[11px] tw-tracking-widest tw-uppercase tw-no-underline hover:tw-bg-[#00992b] hover:tw-text-white tw-transition-colors tw-inline-block tw-rounded-full"
               >Solicite um orçamento</a
             >
           </div>

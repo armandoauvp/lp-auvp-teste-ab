@@ -4,6 +4,20 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Não publicado]
 
+### Desempenho e acessibilidade (auditoria do PageSpeed, out/2026)
+
+- **Fontes servidas pelo site**: Sentient na institucional e Anek Latin na
+  Escola deixam de vir da Fontshare e do Google Fonts. Na Escola, reservas
+  em Arial com as medidas de cada fonte evitam que a página pule quando a
+  fonte chega.
+- **Imagens no tamanho da tela**: `srcset` nas fotos da institucional
+  (`npm run imagens -w institucional`) e fundo da dobra inicial e foto da
+  AUVP Capital da Escola servidos pelo site, com proporção correta.
+- **Acessibilidade**: abas do FAQ da institucional, contraste de rótulos,
+  selos e botões, títulos em ordem e links com nome próprio.
+- **Cabeçalhos de segurança e cache longo** dos arquivos com hash no
+  `vercel.json`.
+
 ### Adicionado (testes A/B)
 
 - **Testes A/B por `experiments.json`**, divididos na Vercel por
