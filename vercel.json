@@ -7,12 +7,12 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/escola",
+      "source": "/escola/",
       "destination": "/",
       "permanent": false
     },
     {
-      "source": "/escola/:path*",
+      "source": "/escola/:path+",
       "destination": "/",
       "permanent": false
     }
