@@ -90,9 +90,10 @@ Para fixar outra (domínio próprio, por exemplo), crie a variável `SITE_URL` e
 Cada PR ganha um preview da Vercel com todas as páginas.
 
 **Cabeçalhos.** O `vercel.json` manda em todas as páginas `X-Frame-Options:
-SAMEORIGIN` (ninguém de fora embute o site num iframe), `Cross-Origin-Opener-Policy:
-same-origin-allow-popups`, `X-Content-Type-Options: nosniff` e
-`Referrer-Policy: strict-origin-when-cross-origin`. Os arquivos com hash em
+SAMEORIGIN` (ninguém de fora embute o site num iframe), `X-Content-Type-Options:
+nosniff` e `Referrer-Policy: strict-origin-when-cross-origin`. Não use
+`Cross-Origin-Opener-Policy`: com ele, o PageSpeed passou a medir CLS de ~0,5
+no computador nas duas páginas, sem salto visível; sem ele, voltou a zero. Os arquivos com hash em
 `/assets/` e `/institucional/assets/` saem com cache de um ano (`immutable`). Se
 alguma página precisar ser embutida em outro domínio, troque o
 `X-Frame-Options` por uma CSP `frame-ancestors` com esse domínio.
