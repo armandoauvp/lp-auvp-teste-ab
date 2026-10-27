@@ -67,5 +67,5 @@ export const links = {
 export const contact = {
   whatsappLabel: "Falar com a AUVP no WhatsApp",
   address: "Goiânia · Goiás · Brasil",
-  email: "contato@auvp.com.br",
+  email: "fale@auvp.com.br",
 } as const;
