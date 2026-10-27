@@ -4,6 +4,16 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Não publicado]
 
+### Novas páginas (out/2026)
+
+- **`/wpp/`**: cópia da LP da Escola montada pelo build. Em dia útil, o
+  `wpp-routing.js` troca os botões do formulário pelo WhatsApp, como no
+  auvp.com.br/wpp/.
+- **`/a/<aula>/`**: as nove aulas gratuitas em vídeo (VTurb), sem indexação.
+  Favicon e imagem de compartilhamento passam a vir de `comum/`, em vez do
+  `wp-content` do WordPress; cada aula ganhou `<main>` e título `h1` para
+  leitores de tela.
+
 ### Pendências da auditoria (out/2026)
 
 - **Informações padronizadas pela página da Escola**: preço R$ 2.997 nos

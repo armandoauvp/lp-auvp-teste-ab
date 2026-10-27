@@ -7,8 +7,11 @@
  *                            links antigos (a Vercel redireciona antes)
  *     dist/institucional/    página institucional (Vite + React)
  *     dist/auvp-sempre/      página da AUVP Sempre (HTML puro, copiada)
+ *     dist/wpp/              cópia da LP da Escola para campanhas de
+ *                            WhatsApp (ver `wpp-routing.js` da Escola)
  *     dist/<pagina>/         demais páginas clonadas do WordPress (idem),
  *                            com a base comum em dist/comum/
+ *     dist/a/<aula>/         aulas gratuitas em vídeo (HTML puro, copiadas)
  *     dist/<pagina>/b.html   versão B de uma página em teste A/B
  *
  * A mesma pasta serve o GitHub Pages e a Vercel. O que muda entre os dois é
@@ -114,6 +117,16 @@ run("escola", {
   BUILD_OUT_DIR: dist,
 });
 
+// /wpp/: a mesma LP da Escola, para campanhas que mandam o lead ao WhatsApp.
+// Quem troca os links do formulário pelo WhatsApp (em dia útil) é o
+// escola/src/wpp-routing.js, que só age neste endereço. A cópia fica um nível
+// abaixo da raiz, por isso os caminhos relativos ganham um `../`.
+await mkdir(path.join(dist, "wpp"), { recursive: true });
+await writeFile(
+  path.join(dist, "wpp/index.html"),
+  umNivelAbaixo(await readFile(path.join(dist, "index.html"), "utf8")),
+);
+
 await mkdir(dist, { recursive: true });
 // Páginas em HTML puro, sem build: index.html, style.css, script.js e img/ vão
 // como estão. Os caminhos são relativos, então funcionam na raiz e sob
@@ -130,6 +143,8 @@ const paginasEstaticas = [
   "resolva-aqui",
   "termos-de-uso",
   "politica-de-privacidade",
+  // Aulas gratuitas em vídeo (VTurb), uma pasta por aula: /a/<aula>/.
+  "a",
 ];
 for (const pasta of paginasEstaticas) {
   await cp(path.join(root, pasta), path.join(dist, pasta), { recursive: true });
@@ -243,3 +258,25 @@ if (experimentos.tests.length) {
 }
 
 console.log(`\nSite montado em ${dist} (base "${base || "/"}")`);
+
+/**
+ * Ajusta o HTML de uma página da raiz para servir uma pasta abaixo: caminhos
+ * relativos em href, src e nas imagens de compartilhamento ganham `../`.
+ * Endereços absolutos, âncoras e `mailto:`/`tel:` ficam como estão.
+ */
+function umNivelAbaixo(html) {
+  const relativo = (valor) => !/^(?:[a-z][a-z0-9+.-]*:|\/|#|\?)/i.test(valor);
+  return html
+    .replace(/(\s(?:href|src)=")([^"]*)(")/g, (tudo, antes, valor, depois) =>
+      valor && relativo(valor)
+        ? `${antes}../${valor.replace(/^\.\//, "")}${depois}`
+        : tudo,
+    )
+    .replace(
+      /(<meta\s+(?:property|name)="(?:og:image|twitter:image)"\s+content=")([^"]+)(")/g,
+      (tudo, antes, valor, depois) =>
+        relativo(valor)
+          ? `${antes}../${valor.replace(/^\.\//, "")}${depois}`
+          : tudo,
+    );
+}
