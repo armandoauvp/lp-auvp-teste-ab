@@ -11,7 +11,7 @@
  * todo mundo vê a versão A. Ver docs/AB-TESTING.md.
  */
 import { decidir } from "./ab/roteamento.js";
-import experimentos from "./experiments.json";
+import experimentos from "./experiments.json" with { type: "json" };
 
 /*
  * Páginas, não arquivos: o middleware fica fora de CSS, JS, imagens, fontes e
@@ -20,11 +20,24 @@ import experimentos from "./experiments.json";
  * de `b.html` funcionar.
  */
 export const config = {
+  // Node.js, não Edge: o Edge não carrega um .json importado, e foi isso que
+  // derrubou o site na primeira versão (MIDDLEWARE_INVOCATION_FAILED).
+  runtime: "nodejs",
   matcher:
     "/((?!.*\\.(?:css|js|mjs|map|json|txt|xml|webmanifest|png|jpe?g|gif|webp|avif|svg|ico|woff2?|ttf|otf|mp4|webm|pdf)$).*)",
 };
 
 export default function middleware(request) {
+  try {
+    return dividir(request);
+  } catch (erro) {
+    // Um erro aqui não pode derrubar a página: serve a A e registra.
+    console.error("teste A/B: erro no middleware", erro);
+    return seguir();
+  }
+}
+
+function dividir(request) {
   const url = new URL(request.url);
   const decisao = decidir({
     pathname: url.pathname,
