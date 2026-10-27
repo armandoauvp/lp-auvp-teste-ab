@@ -39,7 +39,7 @@ export function EndorsementLogo({
 
   if (!logo || falhou) {
     return (
-      <span className="eyebrow text-graphite/50 text-center text-base tracking-[0.2em]">
+      <span className="eyebrow text-graphite/80 text-center text-base tracking-[0.2em]">
         {name}
       </span>
     );

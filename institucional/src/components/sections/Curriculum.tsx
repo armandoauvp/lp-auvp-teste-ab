@@ -70,7 +70,7 @@ export function Curriculum() {
               <span className="text-ink font-[family-name:var(--font-display)] text-4xl leading-none font-semibold tabular-nums">
                 {String(active + 1).padStart(2, "0")}
               </span>
-              <span className="eyebrow text-graphite/70">
+              <span className="eyebrow text-graphite">
                 de {String(modules.length).padStart(2, "0")}
               </span>
             </p>

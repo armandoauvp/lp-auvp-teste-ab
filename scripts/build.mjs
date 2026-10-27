@@ -159,6 +159,36 @@ await writeFile(
 // a surpresa no dia em que depender.
 await writeFile(path.join(dist, ".nojekyll"), "");
 
+// Imagem de compartilhamento (og:image, twitter:image) em endereço absoluto,
+// como o Facebook, o WhatsApp e o LinkedIn exigem. No HTML fica relativa à
+// página, para funcionar em qualquer domínio; aqui ela vira URL completa a
+// partir de SITE_URL. Sem SITE_URL (build local), fica como está. Roda antes
+// das versões B montadas, que herdam o endereço já resolvido.
+if (siteUrl) {
+  const htmls = (await readdir(dist, { recursive: true })).filter(
+    (f) => f.endsWith(".html") && !f.includes("~partytown"),
+  );
+  const origem = new URL(siteUrl).origin;
+  for (const arquivo of htmls) {
+    const caminho = path.join(dist, arquivo);
+    const pasta = path.dirname(arquivo).split(path.sep).join("/");
+    const pagina = `${siteUrl}/${pasta === "." ? "" : `${pasta}/`}`;
+    const html = await readFile(caminho, "utf8");
+    const novo = html.replace(
+      /(<meta\s+(?:property|name)="(?:og:image|og:image:secure_url|twitter:image)"\s+content=")([^"]+)(")/g,
+      (_, antes, valor, depois) =>
+        /^https?:/.test(valor)
+          ? antes + valor + depois
+          : antes +
+            (valor.startsWith("/")
+              ? new URL(valor, origem).href
+              : new URL(valor, pagina).href) +
+            depois,
+    );
+    if (novo !== html) await writeFile(caminho, novo);
+  }
+}
+
 // Versões B montadas a partir de outra página. Ver `versoesMontadas`.
 for (const [pagina, origem] of Object.entries(versoesMontadas)) {
   const htmlA = await readFile(path.join(dist, pagina, "index.html"), "utf8");

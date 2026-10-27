@@ -4,6 +4,25 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Não publicado]
 
+### Pendências da auditoria (out/2026)
+
+- **Informações padronizadas pela página da Escola**: preço R$ 2.997 nos
+  dados estruturados, comunidade de 35 mil alunos ativos, Termos com "mais de
+  100 aulas" e atualizações semanais ao vivo.
+- **Nosso processo atualizado**: as quatro etapas da metodologia, Plano de
+  Estudos, eBooks, ferramentas pelo nome, cartão AUVP, validade da garantia e
+  o formulário oficial de análise de perfil.
+- **DO NOT SCARE como titular** nos rodapés e nos dados estruturados; Termos
+  e Política linkados nas próprias páginas do site.
+- **AUVP Sempre** com canonical em auvp.com.br/auvp-sempre/.
+- **Imagem de compartilhamento e descrição próprias** em todas as páginas; o
+  build converte a og:image para endereço absoluto.
+- **Imagens da Escola no repositório**: ferramentas da metodologia (a da
+  Analítica tinha 3,4 MB) e capas dos módulos extras, que vinham do WordPress.
+- AUVP Business removido de Quem somos; AUVP News, App Store, âncoras dos ETFs
+  e erros de texto corrigidos; contraste, links sublinhados, carrossel
+  focável, títulos e botões ajustados.
+
 ### Desempenho e acessibilidade (auditoria do PageSpeed, out/2026)
 
 - **Fontes servidas pelo site**: Sentient na institucional e Anek Latin na

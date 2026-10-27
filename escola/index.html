@@ -24,17 +24,18 @@
         },
         "provider": {
           "@type": "Organization",
-          "name": "AUVP Capital",
-          "url": "https://auvpcapital.com.br/",
+          "name": "AUVP",
+          "legalName": "DO NOT SCARE SOLUÇÕES INTERATIVAS LTDA",
+          "url": "https://www.auvp.com.br/",
           "identifier": {
             "@type": "PropertyValue",
             "propertyID": "CNPJ",
-            "value": "49.479.036/0001-99"
+            "value": "38.099.091/0001-37"
           }
         },
         "offers": {
           "@type": "Offer",
-          "price": "2797.00",
+          "price": "2997.00",
           "priceCurrency": "BRL",
           "availability": "https://schema.org/InStock",
           "validFrom": "2025-01-01",
@@ -178,17 +179,11 @@
       content="AUVP é uma escola para investidores, aprenda a investir no Brasil e no mundo em apenas 8 semanas."
     />
     <meta property="og:url" content="https://auvp.com.br/" />
-    <meta
-      property="og:image"
-      content="https://auvp.com.br/wp-content/uploads/2023/09/aulas-auvp.png"
-    />
-    <meta
-      property="og:image:secure_url"
-      content="https://auvp.com.br/wp-content/uploads/2023/09/aulas-auvp.png"
-    />
-    <meta property="og:image:width" content="1280" />
-    <meta property="og:image:height" content="720" />
-    <meta name="twitter:card" content="summary" />
+    <!-- Caminhos relativos: o build troca por endereço absoluto (scripts/build.mjs). -->
+    <meta property="og:image" content="imagens/og-escola.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
       content="AUVP - A maior escola de investimentos do Brasil - Curso Raul Sena"
@@ -197,10 +192,7 @@
       name="twitter:description"
       content="AUVP é uma escola para investidores, aprenda a investir no Brasil e no mundo em apenas 8 semanas."
     />
-    <meta
-      name="twitter:image"
-      content="https://auvp.com.br/wp-content/uploads/2023/09/1-20.jpg"
-    />
+    <meta name="twitter:image" content="imagens/og-escola.jpg" />
 
     <style>
       html,
@@ -252,6 +244,7 @@
         height="0"
         width="0"
         style="display: none; visibility: hidden"
+        title="Google Tag Manager"
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
@@ -331,7 +324,7 @@
         </nav>
 
         <!-- Mobile Menu Button -->
-        <button
+        <button type="button"
           class="md:tw-hidden tw-text-[#efbf4e] tw-p-2 tw-bg-transparent hover:tw-bg-transparent focus:tw-outline-none tw-border-none tw-shadow-none"
           id="mobile-menu-btn"
           aria-label="Toggle navigation menu"
@@ -581,7 +574,7 @@
             <div class="tw-flex tw-flex-col tw-gap-4">
               <!-- Item 1 -->
               <div class="learn-item auvp-card-style">
-                <button
+                <button type="button"
                   class="learn-btn tw-border-none tw-outline-none focus:tw-outline-none tw-w-full tw-flex tw-items-center tw-px-6 tw-py-5 tw-text-left hover:tw-bg-[#F6F6F6] tw-transition-colors tw-rounded-none tw-bg-transparent"
                 >
                   <span
@@ -608,7 +601,7 @@
               </div>
               <!-- Item 2 -->
               <div class="learn-item auvp-card-style">
-                <button
+                <button type="button"
                   class="learn-btn tw-border-none tw-outline-none focus:tw-outline-none tw-w-full tw-flex tw-items-center tw-px-6 tw-py-5 tw-text-left hover:tw-bg-[#F6F6F6] tw-transition-colors tw-rounded-none tw-bg-transparent"
                 >
                   <span
@@ -634,7 +627,7 @@
               </div>
               <!-- Item 3 -->
               <div class="learn-item auvp-card-style">
-                <button
+                <button type="button"
                   class="learn-btn tw-border-none tw-outline-none focus:tw-outline-none tw-w-full tw-flex tw-items-center tw-px-6 tw-py-5 tw-text-left hover:tw-bg-[#F6F6F6] tw-transition-colors tw-rounded-none tw-bg-transparent"
                 >
                   <span
@@ -661,7 +654,7 @@
               </div>
               <!-- Item 4 -->
               <div class="learn-item auvp-card-style">
-                <button
+                <button type="button"
                   class="learn-btn tw-border-none tw-outline-none focus:tw-outline-none tw-w-full tw-flex tw-items-center tw-px-6 tw-py-5 tw-text-left hover:tw-bg-[#F6F6F6] tw-transition-colors tw-rounded-none tw-bg-transparent"
                 >
                   <span
@@ -770,12 +763,12 @@
               <div class="method-tool">
                 <img
                   class="method-tool-img"
-                  src="https://raw.githubusercontent.com/design-auvp/projetodelta/main/OR%C3%87AMENTO%20DOM%C3%89STICO.png"
+                  src="/imagens/metodo-orcamento.webp"
                   alt="Ferramenta de Orçamento Doméstico da AUVP"
                   loading="lazy"
                   decoding="async"
-                  width="220"
-                  height="140"
+                  width="1200"
+                  height="589"
                 />
                 <span class="method-tool-overlay"></span>
                 <span class="method-tool-label">Orçamento Doméstico</span>
@@ -783,12 +776,12 @@
               <div class="method-tool">
                 <img
                   class="method-tool-img"
-                  src="https://raw.githubusercontent.com/design-auvp/projetodelta/main/Analise-de-a%C3%A7%C3%B5es-e-indicadores-AUVP-Anal%C3%ADtica.png"
+                  src="/imagens/metodo-analitica.webp"
                   alt="Ferramenta AUVP Analítica"
                   loading="lazy"
                   decoding="async"
-                  width="220"
-                  height="140"
+                  width="1200"
+                  height="840"
                 />
                 <span class="method-tool-overlay"></span>
                 <span class="method-tool-label">AUVP Analítica</span>
@@ -796,12 +789,12 @@
               <div class="method-tool">
                 <img
                   class="method-tool-img"
-                  src="https://raw.githubusercontent.com/design-auvp/projetodelta/main/DIAGRAMA%20DO%20CERRADO.png"
+                  src="/imagens/metodo-diagrama.webp"
                   alt="Diagrama do Cerrado, ferramenta de rebalanceamento de carteira"
                   loading="lazy"
                   decoding="async"
-                  width="220"
-                  height="140"
+                  width="1200"
+                  height="588"
                 />
                 <span class="method-tool-overlay"></span>
                 <span class="method-tool-label">Diagrama do Cerrado</span>
@@ -1149,7 +1142,7 @@
                   mundo. Por isso, neste módulo tratamos os investimentos no
                   exterior, como funciona o mercado norte-americano, sobre as
                   corretoras, as diferenças do mercado dos EUA e do Brasil,
-                  sobre ETF's, Reits, Stocks e Renda Fixa nos Estados Unidos.
+                  sobre ETF's, REITs, Stocks e Renda Fixa nos Estados Unidos.
                 </p>
               </div>
             </div>
@@ -1198,7 +1191,7 @@
                 <p class="card-desc">
                   O Imposto de Renda complica a vida de muitos investidores pelo
                   simples fato deles não terem conhecimento. Por isso, ensinamos
-                  todos os detalhes sobre como declarar os seus investments e
+                  todos os detalhes sobre como declarar os seus investimentos e
                   recolher os impostos de acordo com a lei.
                 </p>
               </div>
@@ -1258,24 +1251,24 @@
           <article class="extra-card">
             <img
               class="extra-card-img"
-              src="https://prod.auvp.com.br/wp-content/uploads/2025/09/thumb-treinamento-1.jpg"
+              src="/imagens/modulo-setores.jpg"
               alt="Módulo de Análise de setores"
               loading="lazy"
               decoding="async"
-              width="400"
-              height="225"
+              width="640"
+              height="360"
             />
             <p class="extra-card-desc">Destrincha os pontos mais importantes para entender cada setor da economia. Ensina como funciona o ciclo de crescimento de empresas em diferentes áreas e quais indicadores realmente importam para investir com estratégia.</p>
           </article>
           <article class="extra-card">
             <img
               class="extra-card-img"
-              src="https://prod.auvp.com.br/wp-content/uploads/2025/09/thumb-treinamento.jpg"
+              src="/imagens/modulo-geopolitica.jpg"
               alt="Módulo de Geopolítica"
               loading="lazy"
               decoding="async"
-              width="400"
-              height="225"
+              width="640"
+              height="360"
             />
             <p class="extra-card-desc">Este conteúdo mostra como decisões políticas, guerras, políticas econômicas e relações internacionais afetam diretamente os investimentos, desenvolvendo uma visão estratégica para antecipar movimentos do mercado e proteger a carteira.</p>
           </article>
@@ -1702,7 +1695,7 @@
               Simule gratuitamente o potencial do seu dinheiro investido com
               método contra o rendimento da poupança.
             </p>
-            <button
+            <button type="button"
               id="open-calc-modal"
               class="auvp-btn-outline-green tw-cursor-pointer calc-cta"
             >
@@ -2134,11 +2127,11 @@
     <section id="faq" class="dobra-alterna auvp-section">
       <div class="auvp-container faq-wrapper">
         <div class="tw-w-full main-container">
-          <h1
+          <h2
             class="tw-font-semibold tw-text-center md:tw-text-left tw-mb-10 tw-text-[#2F2F2F] tw-text-3xl md:tw-text-[41px]"
           >
             Ainda com dúvidas?
-          </h1>
+          </h2>
           <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-4 tw-gap-8">
             <aside class="menu-tab md:tw-col-span-1">
               <ul>
@@ -2204,7 +2197,7 @@
                     <p class="tw-text-[#5A5A5A]">
                       Antes de mais nada, a nossa análise de perfil só aprova um
                       aluno caso ele tenha realmente o que aprender. Então,
-                      mesmo sabendo sobre investments e Educação Financeira,
+                      mesmo sabendo sobre investimentos e Educação Financeira,
                       você pode aperfeiçoar ainda mais o seu conhecimento.
                     </p>
                   </details>
@@ -2292,7 +2285,7 @@
                       >
                       |
                       <a
-                        href="https://apps.apple.com/br/app/escola-auvp/id6502692783?platform=iphone&j=47904&sfmc_sub=16015247&l=1065_HTML&u=670904&mid=546003110&jb=1"
+                        href="https://apps.apple.com/br/app/escola-auvp/id6502692783"
                         class="tw-text-blue-600 hover:tw-underline"
                         >IOS</a
                       >
@@ -2465,7 +2458,7 @@
                     </summary>
                     <p class="tw-text-[#5A5A5A]">
                       O acesso à plataforma é enviado no e-mail utilizado no
-                      pagamento da sua inscrição. Você será avisado por email,
+                      pagamento da sua inscrição. Você será avisado por e-mail,
                       WhatsApp e SMS quanto ao início das aulas.
                     </p>
                   </details>
@@ -2717,12 +2710,12 @@
               </h3>
               <div class="tw-flex tw-flex-col tw-gap-4">
                 <a
-                  href="https://www.auvp.com.br/termos-de-uso/"
+                  href="termos-de-uso/"
                   class="footer-link"
                   >Termos de uso</a
                 >
                 <a
-                  href="https://www.auvp.com.br/politica-de-privacidade/"
+                  href="politica-de-privacidade/"
                   class="footer-link"
                   >Política de privacidade</a
                 >
@@ -2875,7 +2868,7 @@
             >
               Calculadora de Investimentos
             </h3>
-            <button
+            <button type="button"
               id="calc-modal-close"
               class="tw-bg-transparent tw-border-none tw-cursor-pointer tw-text-gray-400 hover:tw-text-[#2F2F2F] tw-w-8 tw-h-8 tw-flex tw-items-center tw-justify-center tw-p-0"
               aria-label="Close calculator"
@@ -3055,7 +3048,7 @@
             >
               Termo de aceite do indicado no Programa de Indicação da AUVP
             </h3>
-            <button
+            <button type="button"
               id="referral-terms-close"
               class="tw-bg-transparent tw-border-none tw-cursor-pointer tw-text-gray-400 hover:tw-text-[#2F2F2F] tw-w-8 tw-h-8 tw-flex tw-items-center tw-justify-center tw-p-0 tw-shrink-0"
               aria-label="Fechar termos do Programa de Indicação"

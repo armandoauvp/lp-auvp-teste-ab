@@ -145,7 +145,7 @@ export function Process() {
                       <p
                         className={cn(
                           "eyebrow transition-colors duration-500",
-                          acesa ? "text-yellow" : "text-mist/60",
+                          acesa ? "text-yellow" : "text-mist/80",
                         )}
                       >
                         {stage.label}

@@ -23,7 +23,7 @@ export function GroupLabel({
     <p
       className={cn(
         "font-[family-name:var(--font-display)] text-xl italic",
-        tone === "light" ? "text-ink/55" : "text-yellow",
+        tone === "light" ? "text-ink/70" : "text-yellow",
         className,
       )}
     >

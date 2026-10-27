@@ -144,12 +144,12 @@
 }
 
 .testimonial__name {
-  color: #999999;
+  color: #595959;
   font-weight: 600;
 }
 
 .testimonial__class {
-  color: #b3b3b3;
+  color: #646464;
 }
 
 .testimonial__text {
@@ -245,6 +245,86 @@
 
 /* ------------------------------------------------------- convite final */
 
+/* --------------------------------------------- etapas da metodologia */
+
+/* As quatro etapas da página da Escola. Números preenchidos em dourado
+   escuro (5,0:1 sobre branco), cartões sem fio lateral. */
+.np-etapas {
+  padding-block: 70px;
+  background: #ffffff;
+}
+
+.np-etapas h2 {
+  margin: 0 0 36px;
+  font-family: var(--font-anek);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.np-etapas__lista {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.np-etapas__lista li {
+  padding: 28px 24px;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  background: #fafafa;
+}
+
+.np-etapas__num {
+  display: block;
+  margin-bottom: 14px;
+  color: #8a6a1c;
+  font-family: var(--font-anek);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.np-etapas h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-anek);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.np-etapas p {
+  margin: 0;
+  color: #4a4a4a;
+  font-family: var(--font-roboto);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+@media (max-width: 991px) {
+  .np-etapas__lista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .np-etapas {
+    padding-block: 50px;
+  }
+
+  .np-etapas h2 {
+    font-size: 28px;
+  }
+
+  .np-etapas__lista {
+    grid-template-columns: 1fr;
+  }
+}
+
 .np-cta {
   padding-block: 60px;
   background: #000000;
@@ -275,7 +355,7 @@
   min-width: 290px;
   padding: 16px 32px;
   border-radius: 5px;
-  background: #43c500;
+  background: #2f7d00;
   color: #ffffff;
   font-family: var(--font-poppins);
   font-size: 16px;
@@ -285,7 +365,7 @@
 }
 
 .np-cta__btn:hover {
-  background: #39a800;
+  background: #286b00;
 }
 
 @media (max-width: 767px) {
@@ -722,4 +802,9 @@
     gap: 16px;
     padding: 32px 0;
   }
+}
+
+.carousel__track:focus-visible {
+  outline: 2px solid #7a5c12;
+  outline-offset: 4px;
 }

@@ -278,7 +278,7 @@ main {
 
 .diff-card p {
   margin: 0;
-  color: #7a7a7a;
+  color: #595959;
   font-size: 17px;
   line-height: 1.6;
 }
@@ -321,7 +321,7 @@ main {
   position: relative;
   display: block;
   padding: 14px 40px 14px 0;
-  color: #7a7a7a;
+  color: #595959;
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;

@@ -56,8 +56,8 @@ export const links = {
    * que esta página precise de deploy.
    */
   whatsapp: "https://sard.ink/leadduvida",
-  terms: "https://www.auvp.com.br/termos-de-uso",
-  privacy: "https://www.auvpcapital.com.br/politica-de-privacidade/",
+  terms: "../termos-de-uso/",
+  privacy: "../politica-de-privacidade/",
   instagram: "https://www.instagram.com/auvpcapital",
   youtube: "https://www.youtube.com/@AUVPCapital",
   spotify:

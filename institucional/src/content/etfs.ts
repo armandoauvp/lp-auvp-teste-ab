@@ -14,11 +14,10 @@ export type Etf = {
   accentClass: string;
   description: string;
   /**
-   * O fundo dentro de `auvpetfs.com.br`, que é onde a metodologia e a
-   * composição de cada um ficam abertas. O site é de página única e cada fundo
-   * é uma âncora nela, daí o `#`: não são quatro páginas, são quatro pontos da
-   * mesma. Os quatro cartões apontaram um tempo para a raiz, porque o caminho
-   * de cada fundo não estava em lugar nenhum que eu pudesse ler.
+   * O site dos ETFs (`auvpetfs.com.br`), onde a metodologia e a composição
+   * de cada fundo ficam abertas. Os quatro cartões apontam para a raiz: o site
+   * não tem âncoras por fundo (#auvp11 e afins caíam no topo do mesmo jeito,
+   * auditoria de out/2026). Se elas forem criadas lá, volte o `#` aqui.
    */
   href: string;
 };
@@ -43,7 +42,7 @@ export const etfs: Etf[] = [
     accentClass: "text-etf-auvp11",
     description:
       "Empresas sólidas, selecionadas por fundamentos consistentes e estrutura de capital saudável.",
-    href: `${links.etfs}#auvp11`,
+    href: links.etfs,
   },
   {
     ticker: "AUPO11",
@@ -51,7 +50,7 @@ export const etfs: Etf[] = [
     accentClass: "text-etf-aupo11",
     description:
       "Carteira de renda fixa com controle de prazo, critérios objetivos e rebalanceamento periódico.",
-    href: `${links.etfs}#aupo11`,
+    href: links.etfs,
   },
   {
     ticker: "AREA11",
@@ -59,7 +58,7 @@ export const etfs: Etf[] = [
     accentClass: "text-etf-area11",
     description:
       "Alocação organizada em fundos imobiliários, com foco em distribuição de renda mensal.",
-    href: `${links.etfs}#area11`,
+    href: links.etfs,
   },
   {
     ticker: "ABTC11",
@@ -67,6 +66,6 @@ export const etfs: Etf[] = [
     accentClass: "text-etf-abtc11",
     description:
       "Combinação dinâmica entre Bitcoin e renda fixa, com alocação baseada no sentimento do mercado.",
-    href: `${links.etfs}#abtc11`,
+    href: links.etfs,
   },
 ];

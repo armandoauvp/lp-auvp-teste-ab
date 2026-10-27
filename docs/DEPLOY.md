@@ -98,6 +98,10 @@ no computador nas duas páginas, sem salto visível; sem ele, voltou a zero. Os 
 alguma página precisar ser embutida em outro domínio, troque o
 `X-Frame-Options` por uma CSP `frame-ancestors` com esse domínio.
 
+**Imagem de compartilhamento.** Cada página aponta a sua `og:image` com
+caminho relativo (ex.: `img/og.jpg`). O build troca por endereço absoluto a
+partir de `SITE_URL`, que é o que Facebook, WhatsApp e LinkedIn exigem.
+
 **Testes A/B só funcionam na Vercel.** O `middleware.js` da raiz é um Routing
 Middleware: a Vercel o detecta sozinha, sem configuração, e ele divide o
 tráfego das páginas listadas em `experiments.json`. No GitHub Pages não há

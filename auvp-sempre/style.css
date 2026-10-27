@@ -473,7 +473,7 @@ ul[role="list"] {
 }
 
 .module-card .module-card__tag {
-  color: var(--yellow);
+  color: #7a5c12;
   font-weight: 600;
   text-align: center;
   letter-spacing: 1px;
@@ -748,7 +748,7 @@ ul[role="list"] {
 }
 
 .plan__note {
-  color: var(--soft);
+  color: #595959;
   font-size: 14px;
   text-align: center;
 }
@@ -798,7 +798,7 @@ ul[role="list"] {
   position: relative;
   display: block;
   padding: 18px 40px 18px 0;
-  color: var(--soft);
+  color: #595959;
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3;

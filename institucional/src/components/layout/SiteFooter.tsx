@@ -31,7 +31,7 @@ export function SiteFooter() {
             <p className="max-w-[30ch] text-sm leading-relaxed">
               {site.tagline}. Fundada em {site.foundingYear} por {site.founder}.
             </p>
-            <p className="eyebrow text-mist/60">{contact.address}</p>
+            <p className="eyebrow text-mist/80">{contact.address}</p>
           </div>
 
           {footerNav.map((group) => (
@@ -79,7 +79,7 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div className="border-ink-line text-mist/60 mt-14 flex flex-col gap-4 border-t pt-8 text-xs md:flex-row md:items-center md:justify-between">
+        <div className="border-ink-line text-mist/80 mt-14 flex flex-col gap-4 border-t pt-8 text-xs md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <p>
               © {new Date().getFullYear()} {site.legalName}. Todos os direitos

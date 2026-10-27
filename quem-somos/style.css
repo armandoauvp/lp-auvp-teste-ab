@@ -11,7 +11,7 @@
 .about-history p,
 .ecosystem p {
   margin: 0;
-  color: #7a7a7a;
+  color: #595959;
   font-size: 18px;
   line-height: 1.6;
 }
@@ -89,9 +89,12 @@
   font-weight: 700;
 }
 
-.ecosystem-card a {
-  color: #d4a73d;
-  text-decoration: none;
+.ecosystem-card a,
+.about-intro a,
+.about-history a {
+  color: #7a5c12;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .ecosystem-card a:hover {

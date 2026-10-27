@@ -86,7 +86,7 @@ export function Figure({
         <figcaption
           className={cn(
             "eyebrow",
-            tone === "light" ? "text-graphite/70" : "text-mist/80",
+            tone === "light" ? "text-graphite" : "text-mist/80",
           )}
         >
           {caption}
