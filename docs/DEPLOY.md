@@ -109,6 +109,40 @@ servidor para isso, e todo mundo vê a versão A. Ver [AB-TESTING.md](AB-TESTING
 
 ---
 
+## AWS (S3 + CloudFront)
+
+Terceiro destino do mesmo `dist/`, ao lado do Pages e da Vercel (nenhum dos dois
+muda). Publicado pelo workflow `.github/workflows/deploy-aws.yml` a cada push na
+`main`, no bucket `lp-auvp` (já existente) com uma distribuição CloudFront na
+frente. O workflow só roda depois que a variável `SITE_DISTRIBUTION_ID` existir
+no repositório (**Settings → Secrets and variables → Actions → Variables**).
+
+- **Testes A/B:** como o middleware é só da Vercel, na AWS duas CloudFront
+  Functions (`edge/`) fazem a mesma divisão, com o mesmo `experiments.json`, o
+  mesmo `b.html` e o mesmo cookie `ab_<id>`. O `scripts/build-edge.mjs` as gera a
+  cada deploy, com os testes e os redirects do `vercel.json` embutidos. Do
+  `vercel.json` a borda entende caminho exato e `/:path+`; outro padrão derruba o
+  build.
+- **Ordem do deploy** (`scripts/ci/deploy.sh`): arquivos novos, funções, remoção
+  dos antigos, invalidação. Os `assets/` com hash nunca são apagados.
+- **Cache:** `/assets/*` e `/institucional/assets/*` por um ano (`immutable`); o
+  resto revalida a cada pedido, igual à Vercel.
+- **Terraform** (`terraform/`, fora do git): referencia o bucket existente e cria
+  CloudFront, OAC, as funções e a role OIDC. A política do bucket é substituída
+  por uma que libera a leitura ao CloudFront e mantém as permissões do Amplify
+  (app `d13l7siu16yjgv`, branch `production`) que já estavam lá. Se surgirem
+  outras, copie-as para o `terraform/main.tf` antes do apply.
+- **O deploy substitui a raiz do bucket.** O `aws s3 sync --delete` apaga o que
+  estava no `lp-auvp` (o site anterior, servido pelo Amplify: `wp-content/`,
+  `sitemap_index.xml`, `llms.txt`...). Decisão de 27/10/2026: se o Amplify
+  precisar voltar, os arquivos antigos são enviados de novo ao bucket. O Amplify
+  só enxerga a mudança no próximo deploy dele.
+- **Endereço que não existe** mostra a página inicial com status 200 e a URL
+  mantida, como no Amplify (o site não tem `404.html`). Para responder 404 com a
+  home, troque `response_code` nos dois `custom_error_response` do Terraform.
+
+---
+
 ## O que faz a hospedagem estática funcionar
 
 **Pré-renderização do institucional.** `institucional/scripts/build.mjs` faz o

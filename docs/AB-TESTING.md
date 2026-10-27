@@ -90,17 +90,19 @@ No computador, `npm run build && npm run preview` faz a mesma divisão em `http:
 - Mudar `cookieDays` vale só para quem receber o cookie dali em diante: quem já tem cookie mantém o prazo antigo.
 - A versão B só aparece na URL da página. Quem abrir `/auvp-sempre/b.html` é redirecionado para `/auvp-sempre/`, e `/b.html` para `/`.
 - Resultados: o sistema só divide o tráfego. Para saber quem converteu, cruze com a ferramenta de vocês usando o cookie `ab_<id-do-teste>` (valor `a` ou `b`). Ele vale para o site inteiro (`Path=/`) e pode ser lido pelo GTM (variável do tipo "Cookie primário").
-- A divisão acontece **só na Vercel** (`middleware.js`). No GitHub Pages, que serve arquivos estáticos, todo mundo vê a versão A, e o `b.html` abre direto se alguém digitar o endereço.
+- A divisão acontece **na Vercel** (`middleware.js`) e **na AWS** (CloudFront Functions em `edge/`, ver [DEPLOY.md](DEPLOY.md)). No GitHub Pages, que serve arquivos estáticos, todo mundo vê a versão A, e o `b.html` abre direto se alguém digitar o endereço.
+- **`versao_pagina`:** todo link para `form.auvp.com.br` sai com `versao_pagina=a` ou `versao_pagina=b`, conforme o arquivo da página (`b.html` = `b`, o resto = `a`). Quem faz é um script que o build coloca no fim de **todo** HTML (`scripts/snippets/versao-pagina.js`), sem precisar mexer nas páginas, inclusive nas novas. Os parâmetros e o `#fragmento` que já estão no link são preservados, e um `versao_pagina` que já exista não é sobrescrito. Links montados e abertos só com `location.href` não recebem o parâmetro.
 
 ## Como é feito (para desenvolvimento)
 
-| Arquivo               | Papel                                                                                                 |
-| --------------------- | ----------------------------------------------------------------------------------------------------- |
-| `experiments.json`    | Testes ligados.                                                                                       |
-| `ab/roteamento.js`    | Decide quem vê o quê: sorteio, cookie, `?ab=`, redirecionamento do `b.html`. Função pura, com testes. |
-| `middleware.js`       | Routing Middleware da Vercel. Chama `ab/roteamento.js` e serve a B no lugar da A, sem mudar a URL.    |
-| `ab/validacao.js`     | Regras do `experiments.json` e do site montado. Roda no `npm run build`; erro derruba o build e o PR. |
-| `scripts/build.mjs`   | Monta as versões B de `versoesMontadas` e chama a validação.                                          |
-| `scripts/preview.mjs` | Servidor local com a mesma divisão.                                                                   |
+| Arquivo                           | Papel                                                                                                 |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `experiments.json`                | Testes ligados.                                                                                       |
+| `ab/roteamento.js`                | Decide quem vê o quê: sorteio, cookie, `?ab=`, redirecionamento do `b.html`. Função pura, com testes. |
+| `middleware.js`                   | Routing Middleware da Vercel. Chama `ab/roteamento.js` e serve a B no lugar da A, sem mudar a URL.    |
+| `ab/validacao.js`                 | Regras do `experiments.json` e do site montado. Roda no `npm run build`; erro derruba o build e o PR. |
+| `scripts/build.mjs`               | Monta as versões B de `versoesMontadas`, injeta o `versao_pagina` e chama a validação.                |
+| `edge/`, `scripts/build-edge.mjs` | Divisão do tráfego na AWS (CloudFront Functions), gerada a cada deploy.                               |
+| `scripts/preview.mjs`             | Servidor local com a mesma divisão.                                                                   |
 
 O middleware só roda em endereços de página: CSS, JS, imagens, fontes e vídeos passam direto, sem custo de execução.

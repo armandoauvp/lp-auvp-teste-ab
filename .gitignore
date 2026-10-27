@@ -44,3 +44,10 @@ yarn-error.log*
 .vscode/
 .idea/
 *.local
+
+# ferramentas locais
+.playwright-mcp/
+
+# deploy na AWS: funções de borda geradas; o Terraform fica fora do git (vai para o repositório de infra)
+edge/dist/
+terraform/

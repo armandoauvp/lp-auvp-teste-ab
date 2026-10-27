@@ -13,11 +13,12 @@
     "dev:escola": "npm run dev -w escola",
     "build": "node scripts/build.mjs",
     "preview": "node scripts/preview.mjs",
-    "test": "node --test ab/*.test.js && npm test -w escola",
+    "test": "node --test ab/*.test.js scripts/*.test.mjs && npm test -w escola",
     "typecheck": "npm run typecheck -w institucional",
     "lint": "npm run lint -w institucional",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "edge:build": "node scripts/build-edge.mjs",
     "esquadro": "node scripts/esquadro.mjs",
     "check": "npm run typecheck && npm run lint && npm run format:check && npm test"
   },

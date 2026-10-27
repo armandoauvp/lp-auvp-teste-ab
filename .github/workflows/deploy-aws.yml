@@ -1,0 +1,58 @@
+name: Deploy na AWS
+
+# Merge na main publica sozinho. Para voltar a uma versão anterior, rode manualmente
+# informando o commit (precisa fazer parte da main).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: Commit a publicar (vazio = ponta da main)
+        required: false
+
+permissions:
+  contents: read
+
+# Publica o mesmo build da Vercel/Pages no S3 + CloudFront (bucket lp-auvp, já existente).
+# Bucket = SITE_NAME; funções de borda e role seguem <SITE_NAME>-<sufixo> (terraform/).
+env:
+  SITE_NAME: lp-auvp
+  AWS_ACCOUNT_ID: "562721540720"
+
+concurrency:
+  group: deploy-aws
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # Só publica depois que a variável SITE_DISTRIBUTION_ID existir no repositório.
+    if: vars.SITE_DISTRIBUTION_ID != ''
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.commit || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: O commit precisa fazer parte da main
+        run: git merge-base --is-ancestor HEAD origin/main
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: node scripts/build-edge.mjs
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/${{ env.SITE_NAME }}-deploy
+          aws-region: us-east-1
+      - name: Publica o site
+        run: bash scripts/ci/deploy.sh
+        env:
+          SITE_DISTRIBUTION_ID: ${{ vars.SITE_DISTRIBUTION_ID }}
