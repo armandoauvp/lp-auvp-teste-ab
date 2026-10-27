@@ -41,3 +41,12 @@ jobs:
       # Ver docs/AB-TESTING.md.
       - name: Build
         run: npm run build
+
+      # O script de versao_pagina entra em todo HTML do build (scripts/build.mjs).
+      - name: Toda página precisa do script de versao_pagina
+        run: '! grep -rL ''data-snippet="versao-pagina"'' dist --include=''*.html'' --exclude-dir=''~partytown'' | grep -q .'
+
+      # Deploy na AWS: as funções de borda precisam ser geradas a partir do
+      # experiments.json e do vercel.json (limite de 10 KB cada).
+      - name: Gera as funções de borda
+        run: npm run edge:build

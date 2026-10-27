@@ -27,6 +27,9 @@
  *   ganha um robots.txt que bloqueia tudo, para o homolog não concorrer com o
  *   auvp.com.br no Google.
  *
+ * No fim, injeta em todo HTML o script que acrescenta `versao_pagina` aos links
+ * de form.auvp.com.br (`b.html` = b, o resto = a).
+ *
  * Antes de montar, confere o experiments.json; no fim, confere se cada teste
  * A/B tem as duas versões no site. Qualquer erro derruba o build com a lista
  * do que corrigir. Ver docs/AB-TESTING.md.
@@ -37,6 +40,7 @@ import { spawnSync } from "node:child_process";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { injectDir } from "./lib/snippets.mjs";
 import {
   canonical,
   validarExperimentos,
@@ -248,6 +252,13 @@ if (process.env.SITE_INDEXAVEL !== "true") {
   );
   console.log(`noindex aplicado em ${paginas.length} páginas (homologação)`);
 }
+
+// Script global em todo HTML do build: acrescenta versao_pagina (a ou b) aos
+// links de form.auvp.com.br. Roda por último para cobrir também as versões B
+// montadas acima. Ver scripts/snippets/versao-pagina.js.
+console.log(
+  `versao_pagina injetado em ${injectDir(dist).length} páginas (links de form.auvp.com.br)`,
+);
 
 const errosDoSite = await validarSite(dist, experimentos);
 if (errosDoSite.length) falhar("Testes A/B com problema:", errosDoSite);
