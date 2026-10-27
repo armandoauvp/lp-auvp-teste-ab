@@ -12,6 +12,11 @@ import { cn } from "@/lib/cn";
  *
  * Lê o mesmo `usePassouOHero` da barra fixa: os dois trocam de estado no mesmo
  * pixel.
+ *
+ * **Amarelo, e não tinta.** O disco era `ink` e sumia nas dobras de fundo
+ * preto (processo, ETFs, convite), justo onde a página fica mais longa. O
+ * amarelo é a única cor da escola que se destaca tanto sobre papel quanto
+ * sobre tinta.
  */
 export function WhatsAppFloat() {
   const passou = usePassouOHero();
@@ -24,7 +29,7 @@ export function WhatsAppFloat() {
       aria-label={contact.whatsappLabel}
       inert={!passou || undefined}
       className={cn(
-        "bg-ink text-paper fixed right-5 bottom-5 z-40 flex h-13 w-13 items-center justify-center rounded-full shadow-[0_8px_28px_rgba(16,16,16,0.32)] transition-[opacity,transform] duration-500 ease-out hover:scale-105 md:right-8 md:bottom-8",
+        "bg-yellow text-ink hover:bg-yellow-soft ring-ink/10 fixed right-5 bottom-5 z-40 flex h-13 w-13 items-center justify-center rounded-full shadow-[0_8px_28px_rgba(16,16,16,0.32)] ring-1 transition-[opacity,transform,background-color] duration-500 ease-out hover:scale-105 md:right-8 md:bottom-8",
         passou ? "opacity-100" : "pointer-events-none translate-y-3 opacity-0",
       )}
     >

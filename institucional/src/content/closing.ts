@@ -17,7 +17,19 @@ export const closing = {
    * essa é a única proteção contra o esquecimento.
    */
   countdown: {
-    target: "2026-09-30T23:59:00-03:00" as string | null,
+    /**
+     * De onde vêm a data e o número da turma: o mesmo webhook que alimenta o
+     * contador da LP da Escola. Ele devolve `proxima_turma` (data sem fuso,
+     * lida como horário de Brasília) e `numero_turma`. Com ele no ar, as duas
+     * páginas mostram a mesma turma sem ninguém precisar editar este arquivo.
+     *
+     * `target` e `turma`, abaixo, ficam como reserva para quando o webhook não
+     * responder.
+     */
+    source:
+      "https://n8n.prod.asupernova.com.br/webhook/f502121b-8208-431e-8e6b-c138831291fb" as
+        string | null,
+    target: "2026-10-30T19:00:00-03:00" as string | null,
     /**
      * Como a turma se chama: "126", "de outubro", "2026.2". Entra no meio do
      * rótulo, que fica "Inscrições para a turma 126 encerram em".
@@ -28,7 +40,7 @@ export const closing = {
      * que é o que está no ar hoje. Prazo sem dono é melhor do que prazo com o
      * nome errado.
      */
-    turma: null as string | null,
+    turma: "62" as string | null,
   },
   title: "A formação começa por uma conversa honesta sobre o seu momento.",
   ctaLabel: "Faça sua Análise de Perfil",

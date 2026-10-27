@@ -6,6 +6,8 @@
  * e o JSON-LD em `src/app/layout.tsx`.
  */
 
+import { comUtm } from "@/lib/utm";
+
 export const site = {
   name: "AUVP",
   legalName: "AUVP Educação Financeira",
@@ -46,7 +48,8 @@ export const links = {
   profileAnalysis: "https://form.auvp.com.br/to/DSo4JgH8",
   studentArea: "https://www.aulasauvp.com.br/start",
   community: "https://comunidade.auvp.com.br/",
-  etfs: "https://www.auvpetfs.com.br/",
+  /** Com `utm_source`, como os produtos: ver `src/lib/utm.ts`. */
+  etfs: comUtm("https://www.auvpetfs.com.br/"),
   /**
    * Encurtador da própria AUVP que abre a conversa no WhatsApp, e não um
    * `wa.me` com o número cru: assim o atendimento pode trocar de número sem

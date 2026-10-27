@@ -39,8 +39,8 @@ export const stages: Stage[] = [
           "Aulas gravadas e livros digitais exclusivos, registrados na Biblioteca Nacional.",
       },
       {
-        title: "Plantão ao vivo",
-        description: "Dúvidas respondidas ao vivo toda semana.",
+        title: "Atualizações semanais de mercado",
+        description: "Ao vivo com Raul Sena.",
       },
     ],
   },

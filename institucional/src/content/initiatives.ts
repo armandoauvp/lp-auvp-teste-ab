@@ -1,10 +1,15 @@
 /** Dobra 08: as iniciativas da AUVP. */
 
+import { comUtm } from "@/lib/utm";
+
 /**
  * `href` é opcional de propósito. Nenhum endereço aqui é deduzido do nome do
  * produto: ou veio da página da escola em produção, ou veio da instituição.
  * Sem endereço confirmado o cartão não vira link, porque um "Saiba mais" que
  * cai em 404 custa mais do que um cartão que não clica.
+ *
+ * Todo endereço de produto passa por `comUtm`, para a conversão ser atribuída
+ * à LP da escola. Ver `src/lib/utm.ts`.
  */
 export type Product = {
   name: string;
@@ -43,46 +48,46 @@ export const products: Product[] = [
     name: "AUVP Capital",
     description:
       "Consultoria de investimentos com gestão completa do patrimônio. Top 1 no ranking BTG Pactual.",
-    href: "https://www.auvpcapital.com.br/",
+    href: comUtm("https://www.auvpcapital.com.br/"),
   },
   {
     name: "AUVP Wealth",
     description:
       "Planejamento patrimonial, sucessório e tributário, com holdings e offshore.",
-    href: "https://auvpcapital.com.br/wealth",
+    href: comUtm("https://auvpcapital.com.br/wealth"),
   },
   {
     name: "AUVP Seguros",
     description:
       "Seguro de vida como estratégia patrimonial, com as melhores seguradoras do mercado.",
-    href: "https://auvpcapital.com.br/seguros/",
+    href: comUtm("https://auvpcapital.com.br/seguros/"),
   },
   {
     name: "AUVP Crédito",
     description: "Crédito sob medida com cotação em mais de 20 instituições.",
-    href: "https://auvpcapital.com.br/credito",
+    href: comUtm("https://auvpcapital.com.br/credito"),
   },
   {
     name: "AUVP Câmbio",
     description: "Câmbio e remessas internacionais, com taxas competitivas.",
-    href: "https://auvpcapital.com.br/cambio",
+    href: comUtm("https://auvpcapital.com.br/cambio"),
   },
   {
     name: "AUVP Corporate",
     description: "Conta PJ, folha de pagamento e automação para a sua empresa.",
-    href: "https://auvpcapital.com.br/corporate/",
+    href: comUtm("https://auvpcapital.com.br/corporate/"),
   },
   {
     name: "AUVP Agro",
     description:
       "Educação em seguro de preço e execução de hedge para o agronegócio.",
-    href: "https://auvpagro.com.br/",
+    href: comUtm("https://auvpagro.com.br/"),
   },
   {
     name: "AUVP Pro",
     description:
       "Preparatórios para as principais certificações do mercado financeiro.",
-    href: "https://auvp.pro/",
+    href: comUtm("https://auvp.pro/"),
   },
 ];
 
@@ -133,7 +138,7 @@ export const partnerships: Partnership[] = [
     name: "AUVP Experience",
     description:
       "Imersão executiva internacional que leva investidores para dentro dos grandes polos de tecnologia e comércio do mundo.",
-    comingSoon: true,
+    href: comUtm("https://auvpexperience.com.br/"),
     photo: {
       src: "/images/auvp-experience-hong-kong.webp",
       alt: "Delegação da AUVP Experience com a bandeira do Brasil, diante da paisagem de Hong Kong.",

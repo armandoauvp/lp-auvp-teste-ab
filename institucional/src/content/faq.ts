@@ -50,7 +50,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: "Como funciona a formação?",
         answer:
-          "São oito módulos liberados progressivamente ao longo de oito semanas, do zero ao avançado, com mais de 120 aulas gravadas, oito livros digitais exclusivos e plantão de dúvidas ao vivo toda semana.",
+          "São oito módulos liberados progressivamente ao longo de oito semanas, do zero ao avançado, com mais de 120 aulas gravadas, oito livros digitais exclusivos e atualizações semanais de mercado ao vivo com Raul Sena.",
       },
       {
         question: "O que é o Diagrama do Cerrado?",
@@ -95,9 +95,9 @@ export const faqCategories: FaqCategory[] = [
           "O aluno mantém acesso à plataforma, às ferramentas e à comunidade enquanto for membro da AUVP, incluindo as atualizações feitas no conteúdo ao longo do tempo.",
       },
       {
-        question: "As aulas são ao vivo ou gravadas?",
+        question: "As aulas são gravadas?",
         answer:
-          "As aulas dos módulos são gravadas e liberadas progressivamente. Além delas, há plantão ao vivo semanal para responder dúvidas e encontros presenciais da comunidade ao longo do ano.",
+          "São mais de 100 aulas gravadas, disponíveis para o aluno ver e rever quantas vezes quiser. Além disso, contamos com encontros semanais para atualizações de mercado e um momento de dúvidas com Raul.",
       },
     ],
   },
