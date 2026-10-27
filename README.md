@@ -3,21 +3,31 @@
 Repositório das páginas da **AUVP Escola de Investimentos**, publicadas juntas
 num único site estático:
 
-| Caminho           | Pasta            | O que é                                    |
-| ----------------- | ---------------- | ------------------------------------------ |
-| `/`               | `indice/`        | Índice com links para as páginas           |
-| `/institucional/` | `institucional/` | Página institucional (Vite + React)        |
-| `/escola/`        | `escola/`        | Landing page da Escola (Vite + Tailwind 3) |
-| `/auvp-sempre/`   | `auvp-sempre/`   | Página da AUVP Sempre (HTML puro)          |
+| Caminho                     | Pasta                      | O que é                                    |
+| --------------------------- | -------------------------- | ------------------------------------------ |
+| `/`                         | `indice/`                  | Índice com links para as páginas           |
+| `/institucional/`           | `institucional/`           | Página institucional (Vite + React)        |
+| `/escola/`                  | `escola/`                  | Landing page da Escola (Vite + Tailwind 3) |
+| `/auvp-sempre/`             | `auvp-sempre/`             | Página da AUVP Sempre (HTML puro)          |
+| `/auvp-internacional/`      | `auvp-internacional/`      | AUVP Internacional (HTML puro)             |
+| `/nosso-processo/`          | `nosso-processo/`          | Nosso processo (HTML puro)                 |
+| `/quem-somos/`              | `quem-somos/`              | Quem somos (HTML puro)                     |
+| `/obrigado-aprovado/`       | `obrigado-aprovado/`       | Obrigado (aprovado) (HTML puro)            |
+| `/obrigado-auvp-analitica/` | `obrigado-auvp-analitica/` | Obrigado AUVP Analítica (HTML puro)        |
+| `/resolva-aqui/`            | `resolva-aqui/`            | Resolva aqui (HTML puro)                   |
+| `/termos-de-uso/`           | `termos-de-uso/`           | Termos de uso (HTML puro)                  |
+| `/politica-de-privacidade/` | `politica-de-privacidade/` | Política de privacidade (HTML puro)        |
 
 O resto deste README trata da página institucional. A LP da Escola é HTML
 editado direto em `escola/index.html`; os masters das imagens dela estão em
 `escola/imagens-originais/`.
 
-A página da AUVP Sempre é HTML puro, sem build: `auvp-sempre/index.html`, com
-`style.css`, `script.js` e as imagens em `auvp-sempre/img/`. O build só copia a
-pasta. A estrutura segue as regras de teste A/B (versão B em `b.html` na mesma
-pasta, mesmo `<link rel="canonical">`).
+A página da AUVP Sempre e as demais páginas clonadas do WordPress
+(auvp.com.br) são HTML puro, sem build: cada uma tem `index.html`, `style.css`,
+às vezes `script.js`, e as imagens em `img/`. O build só copia as pastas. As
+páginas vindas do WordPress compartilham cabeçalho, rodapé, logos e a faixa de
+título por `comum/` (`base.css`, `site.js`, `img/`). A estrutura segue as regras
+de teste A/B (versão B em `b.html` na mesma pasta, mesmo `<link rel="canonical">`).
 
 ## Página institucional
 

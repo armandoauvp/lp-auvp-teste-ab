@@ -1,0 +1,336 @@
+/*
+ * Obrigado (aprovado): página que recebe quem passou na análise de perfil.
+ * Não tem o cabeçalho nem o rodapé do site, como no WordPress.
+ *
+ * O bloco "Módulos avançados" (.auvp-mx-*) veio pronto de um widget HTML da
+ * página original; o CSS dele está no fim deste arquivo, sem mudanças.
+ */
+
+.section-title {
+  margin: 0 0 40px;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------ abertura */
+
+.welcome {
+  display: flex;
+  align-items: center;
+  min-height: 859px;
+  padding-block: 120px;
+  background: #0e0101 url("img/fundo-raul.webp") right center / cover no-repeat;
+  color: #ffffff;
+}
+
+.welcome__inner {
+  max-width: 1140px;
+}
+
+.welcome__inner > * {
+  max-width: 773px;
+}
+
+.welcome__logo {
+  width: 213px;
+  margin-bottom: 24px;
+}
+
+.welcome h1 {
+  margin: 0 0 32px;
+  font-size: 43px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.welcome p {
+  margin: 0 0 16px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.welcome__notice {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+  padding: 32px 36px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.welcome__notice svg {
+  flex: none;
+  color: #9a9a9a;
+}
+
+.welcome__notice p {
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .welcome {
+    position: relative;
+    isolation: isolate;
+    min-height: auto;
+    padding-block: 72px;
+    background-position: 70% center;
+  }
+
+  /* Overlay preto para manter a leitura sobre a foto. */
+  .welcome::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .welcome h1 {
+    font-size: 32px;
+  }
+
+  .welcome p {
+    font-size: 17px;
+  }
+
+  .welcome__notice {
+    padding: 24px 20px;
+  }
+}
+
+/* ------------------------------------------------------------- módulos */
+
+.modules {
+  padding-block: 50px;
+}
+
+.modules__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 48px 24px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.module {
+  padding-inline: 30px;
+}
+
+.module img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 6px;
+}
+
+.module p {
+  margin: 20px 0 0;
+  color: #677294;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+@media (max-width: 991px) {
+  .modules__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .module {
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .modules__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .module img {
+    max-width: none;
+  }
+
+  .section-title {
+    font-size: 30px;
+  }
+}
+
+/* ------------------------------------------------------------- dúvidas */
+
+.faq {
+  padding-block: 50px 96px;
+}
+
+.faq__list {
+  max-width: 1140px;
+  margin-inline: auto;
+}
+
+.faq__list details {
+  background: #f2f2f2;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.faq__list summary {
+  position: relative;
+  display: block;
+  padding: 15px 20px 15px 44px;
+  color: #555555;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__list summary::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.faq__list details[open] summary::before {
+  transform: translateY(-30%) rotate(225deg);
+}
+
+.faq__answer {
+  padding: 0 20px 20px 44px;
+  color: #555555;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.faq__answer p {
+  margin: 0;
+}
+
+/* ======================================================================
+   Bloco HTML do WordPress: "Módulos avançados para ir mais longe"
+   ====================================================================== */
+
+.auvp-mx {
+  --auvp-mx-dourado: #efbf4e;
+  --auvp-mx-titulo: #0a0a0a;
+  --auvp-mx-texto: #5a5a5a;
+  --auvp-mx-borda: #e5e5e5;
+  font-family: "Anek Latin", sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 60px 20px;
+  background: #ffffff;
+}
+.auvp-mx *,
+.auvp-mx *::before,
+.auvp-mx *::after {
+  box-sizing: border-box;
+}
+
+.auvp-mx-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.auvp-mx-title {
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--auvp-mx-titulo);
+  margin: 0 0 16px;
+}
+.auvp-mx-sub {
+  color: #52525b;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 0 40px;
+}
+
+.auvp-mx-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.auvp-mx-card {
+  background: #ffffff;
+  border: 1px solid var(--auvp-mx-borda);
+  border-top: 3px solid var(--auvp-mx-dourado);
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.auvp-mx-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+.auvp-mx-card-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #2f2f2f;
+  margin: 0;
+  line-height: 1.25;
+}
+.auvp-mx-tag {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a8862a;
+  margin-top: 6px;
+}
+.auvp-mx-card-desc {
+  color: var(--auvp-mx-texto);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .auvp-mx {
+    padding: 90px 32px;
+  }
+  .auvp-mx-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .auvp-mx-title {
+    font-size: 40px;
+  }
+}
+@media (min-width: 1280px) {
+  .auvp-mx-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .auvp-mx-title {
+    font-size: 45px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auvp-mx-card {
+    transition: none;
+  }
+  .auvp-mx-card:hover {
+    transform: none;
+  }
+}

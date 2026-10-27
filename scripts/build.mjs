@@ -5,6 +5,8 @@
  *     dist/institucional/    página institucional (Vite + React)
  *     dist/escola/           LP da Escola (Vite)
  *     dist/auvp-sempre/      página da AUVP Sempre (HTML puro, copiada)
+ *     dist/<pagina>/         demais páginas clonadas do WordPress (idem),
+ *                            com a base comum em dist/comum/
  *
  * A mesma pasta serve o GitHub Pages e a Vercel. O que muda entre os dois é
  * só o prefixo de URL, lido do ambiente:
@@ -56,11 +58,25 @@ run("escola", {
 });
 
 await mkdir(dist, { recursive: true });
-// HTML puro, sem build: index.html, style.css, script.js e img/ vão como estão.
-// Os caminhos são relativos, então funcionam na raiz e sob subcaminho do Pages.
-await cp(path.join(root, "auvp-sempre"), path.join(dist, "auvp-sempre"), {
-  recursive: true,
-});
+// Páginas em HTML puro, sem build: index.html, style.css, script.js e img/ vão
+// como estão. Os caminhos são relativos, então funcionam na raiz e sob
+// subcaminho do Pages. `comum/` guarda o cabeçalho, o rodapé e as imagens que
+// as páginas vindas do WordPress compartilham.
+const paginasEstaticas = [
+  "comum",
+  "auvp-sempre",
+  "auvp-internacional",
+  "nosso-processo",
+  "quem-somos",
+  "obrigado-aprovado",
+  "obrigado-auvp-analitica",
+  "resolva-aqui",
+  "termos-de-uso",
+  "politica-de-privacidade",
+];
+for (const pasta of paginasEstaticas) {
+  await cp(path.join(root, pasta), path.join(dist, pasta), { recursive: true });
+}
 await copyFile(
   path.join(root, "indice/index.html"),
   path.join(dist, "index.html"),

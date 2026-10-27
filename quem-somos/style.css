@@ -1,0 +1,126 @@
+/* Quem somos: o texto institucional e os caminhos para cada frente da AUVP. */
+
+.about-kicker {
+  margin: 0 0 20px;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.about-intro p,
+.about-history p,
+.ecosystem p {
+  margin: 0;
+  color: #7a7a7a;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------- abertura */
+
+.about-intro {
+  padding-block: 45px;
+}
+
+.about-intro__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 40px;
+  max-width: 1140px;
+}
+
+.about-intro__photo {
+  width: 100%;
+  max-width: 504px;
+  border-radius: 14px;
+}
+
+/* ----------------------------------------------------------- história */
+
+.about-history {
+  padding-block: 45px;
+  background: var(--mist);
+}
+
+.about-history__inner {
+  max-width: 1094px;
+}
+
+/* -------------------------------------------------------- ecossistema */
+
+.ecosystem {
+  padding-block: 34px;
+}
+
+.ecosystem__inner {
+  display: grid;
+  grid-template-columns: 91px minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+  max-width: 1140px;
+}
+
+.ecosystem__eye {
+  width: 71px;
+  margin: 10px auto 0;
+}
+
+.ecosystem__list {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0 10px;
+  list-style: none;
+}
+
+.ecosystem-card {
+  padding: 26px 24px;
+  border-radius: 14px;
+  background: var(--mist);
+}
+
+.ecosystem-card p {
+  font-size: 16px;
+}
+
+.ecosystem-card .ecosystem-card__q {
+  color: #6b6b6b;
+  font-weight: 700;
+}
+
+.ecosystem-card a {
+  color: #d4a73d;
+  text-decoration: none;
+}
+
+.ecosystem-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .about-intro__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .about-intro__photo {
+    margin-inline: auto;
+  }
+
+  .about-intro p,
+  .about-history p {
+    font-size: 16px;
+  }
+
+  .ecosystem__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .ecosystem__eye {
+    width: 56px;
+  }
+
+  .ecosystem__list {
+    padding: 0;
+  }
+}

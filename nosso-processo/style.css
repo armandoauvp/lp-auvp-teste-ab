@@ -1,0 +1,725 @@
+/*
+ * Nosso processo.
+ *
+ * A abertura, os depoimentos e o convite final são estilos desta cópia. As
+ * dobras 1 a 4 vêm do bloco HTML próprio que a página tinha no WordPress, com
+ * o CSS dele mantido mais abaixo, sem mudança além de três ajustes: a fonte
+ * passou a vir do <head>, as regras de body saíram e a animação de entrada só
+ * esconde o conteúdo quando o script está rodando (classe .js no <html>).
+ */
+
+/* ------------------------------------------------------------- abertura */
+
+.np-hero {
+  display: flex;
+  align-items: center;
+  min-height: 625px;
+  background: #000000 url("img/hero-raul.webp") left center / cover no-repeat;
+  color: #ffffff;
+}
+
+.np-hero__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+  padding-block: 90px;
+}
+
+.np-hero__copy {
+  grid-column: 2;
+}
+
+.np-hero h1 {
+  margin: 0 0 8px;
+  font-family: var(--font-anek);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.np-hero p {
+  margin: 0 0 18px;
+  font-family: var(--font-roboto);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+@media (max-width: 991px) {
+  .np-hero {
+    position: relative;
+    isolation: isolate;
+    background-position: 30% center;
+  }
+
+  /* Overlay preto para manter a leitura sobre a foto. */
+  .np-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .np-hero__inner {
+    grid-template-columns: 1fr;
+    padding-block: 72px;
+  }
+
+  .np-hero__copy {
+    grid-column: 1;
+  }
+
+  .np-hero h1 {
+    font-size: 32px;
+  }
+
+  .np-hero p {
+    font-size: 16px;
+  }
+}
+
+/* ---------------------------------------------------------- depoimentos */
+
+.testimonials {
+  padding-block: 120px;
+  background: #f6f6f6;
+}
+
+.testimonials__title {
+  max-width: 780px;
+  margin: 0 auto 56px;
+  color: #2f2f2f;
+  font-family: var(--font-anek);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.carousel__track {
+  display: grid;
+  grid-auto-columns: calc((100% - 32px) / 2);
+  grid-auto-flow: column;
+  gap: 32px;
+  margin: 0;
+  padding: 0 0 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  list-style: none;
+}
+
+.carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  scroll-snap-align: start;
+}
+
+.testimonial__who {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-left: 12px;
+}
+
+.testimonial__who img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial__who p {
+  margin: 0;
+  font-family: var(--font-poppins);
+  font-size: 14px;
+}
+
+.testimonial__name {
+  color: #999999;
+  font-weight: 600;
+}
+
+.testimonial__class {
+  color: #b3b3b3;
+}
+
+.testimonial__text {
+  position: relative;
+  flex: 1;
+  margin: 0;
+  padding: 24px 20px;
+  background: #ffffff;
+  color: #555555;
+  font-family: var(--font-poppins);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.testimonial__text::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 28px;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  transform: rotate(45deg);
+}
+
+.testimonial__text p {
+  margin: 0;
+}
+
+.testimonial__text p + p {
+  margin-top: 12px;
+}
+
+.carousel__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.carousel__arrow {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0 0 3px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #555555;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carousel__arrow:hover {
+  background: #e6e6e6;
+}
+
+.carousel__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #c4c4c4;
+  cursor: pointer;
+}
+
+.carousel__dot[aria-current="true"] {
+  background: #000000;
+}
+
+@media (max-width: 767px) {
+  .testimonials {
+    padding-block: 72px;
+  }
+
+  .testimonials__title {
+    font-size: 24px;
+  }
+
+  .carousel__track {
+    grid-auto-columns: 100%;
+  }
+}
+
+/* ------------------------------------------------------- convite final */
+
+.np-cta {
+  padding-block: 60px;
+  background: #000000;
+}
+
+.np-cta__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 32px;
+  max-width: 1120px;
+}
+
+.np-cta h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-roboto);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.np-cta__btn {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 290px;
+  padding: 16px 32px;
+  border-radius: 5px;
+  background: #43c500;
+  color: #ffffff;
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.np-cta__btn:hover {
+  background: #39a800;
+}
+
+@media (max-width: 767px) {
+  .np-cta__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .np-cta h2 {
+    font-size: 26px;
+  }
+}
+
+/* ======================================================================
+   Bloco HTML do WordPress (dobras 1 a 4)
+   ====================================================================== */
+
+:root {
+  --primary-gold: #efbf4e;
+  --primary-gold-dark: #d4a73d;
+  --bg-dark: #0a0a0a;
+  --text-dark: #18181b;
+  --text-muted: #52525b;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+
+  --apple-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --font-title: "Anek Latin", sans-serif;
+  --font-sans: "Anek Latin", sans-serif;
+  --font-body: "Roboto", sans-serif;
+}
+
+/* =========================================
+   LAYOUT PRINCIPAL (SISTEMA DE DOBRAS)
+   ========================================= */
+.fold {
+  width: 100%;
+  padding: 120px 0; /* Margens de 120px topo e base no desktop */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Regras de Alternância de Cores (Dobra vs Card) */
+.fold-white {
+  background-color: #ffffff;
+}
+.fold-gray {
+  background-color: #f6f6f6;
+}
+
+.fold-white .three-col-card,
+.fold-white .dobra-item {
+  background-color: #f6f6f6;
+}
+
+.fold-gray .three-col-card,
+.fold-gray .dobra-item {
+  background-color: #ffffff;
+}
+
+/* Animações Globais */
+.js .animate-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s var(--apple-ease),
+    transform 0.8s var(--apple-ease);
+}
+
+.js .animate-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   GRID DE 3 COLUNAS (DOBRA 1)
+   ========================================= */
+.three-col-header {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 60px;
+}
+
+.three-col-header h2 {
+  font-family: var(--font-title);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.three-col-header p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 25px;
+  margin: 0;
+  padding-top: 8px;
+}
+
+.three-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.three-col-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0; /* Bordas retas */
+  border: 1px solid var(--border-subtle);
+}
+
+.three-col-card img,
+.three-col-card video {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.three-col-content {
+  padding: 32px 24px;
+  flex-grow: 1;
+}
+
+.three-col-title {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+.three-col-desc {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 25px;
+  margin: 0;
+}
+
+.three-col-desc strong {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.three-col-desc + .three-col-desc {
+  margin-top: 12px;
+}
+
+/* =========================================
+   ESTRUTURA DE DOBRAS (SECÇÕES RESTANTES)
+   ========================================= */
+.dobra-item {
+  border: 1px solid var(--border-subtle);
+  padding: 60px;
+  border-radius: 0; /* Bordas retas */
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.01),
+    0 10px 15px -3px rgba(0, 0, 0, 0.01);
+}
+
+/* Modificador Lado a Lado (Sem Card) para Aulas ao Vivo */
+.split-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr; /* Imagem maior que o texto, fiel à referência */
+  gap: 60px;
+  align-items: center;
+}
+
+.split-visual {
+  width: 100%;
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  position: relative; /* Necessário para posicionar a tag sobre a imagem */
+}
+
+.split-visual img,
+.split-visual video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.split-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Textos da Dobra */
+.step-pill {
+  display: inline-block;
+  background-color: rgba(239, 191, 78, 0.15);
+  color: var(--primary-gold-dark);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 8px 16px;
+  margin-bottom: 24px;
+  border-radius: 0; /* Bordas retas */
+  align-self: flex-start; /* Para não esticar no flexbox */
+}
+
+.dobra-title {
+  font-family: var(--font-title);
+  color: var(--text-dark);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.dobra-desc {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 25px;
+  margin: 0 0 16px 0;
+  max-width: 900px;
+}
+
+.dobra-desc:last-of-type {
+  margin-bottom: 0;
+}
+
+.dobra-desc strong {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+/* Área Visual da Dobra */
+.dobra-visual {
+  margin-top: 40px;
+  width: 100%;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0; /* Bordas retas */
+  overflow: hidden;
+}
+
+.dobra-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* =========================================
+   LISTA DE FERRAMENTAS (REFERÊNCIA HARVARD)
+   ========================================= */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.feature-list-item {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 60px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  align-items: start;
+}
+
+.feature-list-item:first-child {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.feature-list-title {
+  font-family: var(--font-title); /* Fonte Anek Latin */
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.feature-list-desc {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 25px;
+  margin: 0;
+}
+
+.feature-list-desc p {
+  margin: 0 0 12px 0;
+}
+
+.feature-list-desc p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   CARD GARANTIA
+   ========================================= */
+.garantia-card {
+  flex-direction: row;
+  align-items: center;
+  gap: 48px;
+  /* Fundo gerido globalmente pelo .fold agora */
+}
+
+.garantia-content {
+  flex: 1;
+}
+
+.garantia-seal {
+  width: 80px;
+  margin-bottom: 24px;
+  border-radius: 0;
+}
+
+.garantia-visual {
+  flex: 1.5;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0;
+  border: none;
+  background: transparent;
+}
+
+.garantia-visual img {
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+}
+
+/* =========================================
+   PLANILHAS E TABELAS (RESPONSIVIDADE)
+   ========================================= */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Garante scroll suave em dispositivos iOS/Mobile */
+  margin-bottom: 24px;
+  border: 1px solid var(--border-subtle);
+}
+
+.table-responsive table,
+.table-responsive iframe {
+  width: 100%;
+  min-width: 800px; /* Força a rolagem horizontal caso o conteúdo seja menor que 800px */
+  border-collapse: collapse;
+  border: none;
+  display: table;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+   ========================================= */
+@media (max-width: 991px) {
+  .three-col-header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .three-col-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .split-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .feature-list-item {
+    grid-template-columns: 250px 1fr;
+    gap: 40px;
+  }
+  .garantia-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .garantia-visual {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .fold {
+    padding: 45px 0; /* Espaçamento ajustado para 45px no mobile */
+  }
+
+  /* Títulos padronizados para Anek Latin, Bold, 35px no mobile */
+  .three-col-header h2,
+  .three-col-title,
+  .dobra-title,
+  .feature-list-title {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 1.1; /* Ajuste para evitar encavalamento de linhas com esse tamanho */
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 45px; /* 45px de espaçamento lateral no mobile */
+  }
+  .three-col-grid {
+    grid-template-columns: 1fr;
+  }
+  .dobra-item {
+    padding: 32px 20px;
+  }
+
+  .feature-list-item {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 32px 0;
+  }
+}

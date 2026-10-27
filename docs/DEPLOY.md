@@ -1,13 +1,14 @@
 # Publicação
 
-O repositório gera **um único site estático** em `dist/`, com quatro endereços:
+O repositório gera **um único site estático** em `dist/`, com estes endereços:
 
-| Caminho           | Origem                             |
-| ----------------- | ---------------------------------- |
-| `/`               | `indice/index.html`, o índice      |
-| `/institucional/` | `institucional/`, Vite + React     |
-| `/escola/`        | `escola/`, a LP da Escola com Vite |
-| `/auvp-sempre/`   | `auvp-sempre/`, HTML puro copiado  |
+| Caminho           | Origem                                                                             |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| `/`               | `indice/index.html`, o índice                                                      |
+| `/institucional/` | `institucional/`, Vite + React                                                     |
+| `/escola/`        | `escola/`, a LP da Escola com Vite                                                 |
+| `/auvp-sempre/`   | `auvp-sempre/`, HTML puro copiado                                                  |
+| `/<pagina>/`      | as demais páginas clonadas do WordPress, HTML puro copiado, com a base em `comum/` |
 
 A mesma pasta serve o **GitHub Pages** e a **Vercel**. Quem monta tudo é
 `scripts/build.mjs`, chamado por `npm run build` na raiz.

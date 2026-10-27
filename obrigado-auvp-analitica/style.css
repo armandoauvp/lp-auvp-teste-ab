@@ -1,0 +1,114 @@
+/*
+ * Obrigado AUVP Analítica: página de agradecimento depois da compra. Usa a
+ * identidade azul da Analítica e não tem o cabeçalho nem o rodapé do site.
+ */
+
+body {
+  background: var(--mist);
+  color: #4d4d4d;
+  font-family: "Noto Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+.thanks-top {
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+}
+
+.thanks-top img {
+  width: 268px;
+}
+
+.thanks {
+  display: grid;
+  place-items: center;
+  min-height: calc(100svh - 126px);
+  padding: 40px 16px 80px;
+}
+
+.thanks__card {
+  width: min(100%, 1140px);
+  padding: 72px 32px;
+  border-radius: 16px;
+  background: var(--white);
+  text-align: center;
+}
+
+.thanks__card h1 {
+  margin: 0;
+  color: #046191;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.thanks__card p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.thanks__card .thanks__lead {
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+
+.thanks__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.thanks__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 235px;
+  min-height: 44px;
+  padding: 10px 24px;
+  border: 2px solid #046191;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.thanks__btn--outline {
+  background: var(--mist);
+  color: #046191;
+}
+
+.thanks__btn--outline:hover {
+  background: #046191;
+  color: var(--mist);
+}
+
+.thanks__btn--solid {
+  background: #046191;
+  color: var(--mist);
+}
+
+.thanks__btn--solid:hover {
+  background: #034a6f;
+  border-color: #034a6f;
+}
+
+@media (max-width: 767px) {
+  .thanks__card {
+    padding: 48px 20px;
+  }
+
+  .thanks__card h1 {
+    font-size: 38px;
+  }
+
+  .thanks__card p {
+    font-size: 17px;
+  }
+}

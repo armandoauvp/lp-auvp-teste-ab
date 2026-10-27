@@ -2,8 +2,9 @@
 
 Este documento trata da página institucional (`institucional/`). O repositório
 também abriga a LP da Escola (`escola/`, HTML + Vite + Tailwind 3) e um índice
-(`indice/`), além da página da AUVP Sempre (`auvp-sempre/`, HTML puro, copiada
-sem build). Todas saem num único `dist/`; ver [docs/DEPLOY.md](DEPLOY.md).
+(`indice/`), além da página da AUVP Sempre (`auvp-sempre/`) e das demais páginas
+clonadas do WordPress, todas em HTML puro e copiadas sem build (base comum em
+`comum/`). Todas saem num único `dist/`; ver [docs/DEPLOY.md](DEPLOY.md).
 
 ```
 /

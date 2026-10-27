@@ -1,0 +1,435 @@
+/*
+ * AUVP Internacional: página de vendas do treinamento de investimento no
+ * exterior. Paleta verde própria desta página, como no WordPress.
+ */
+
+main {
+  --intl-green: #0b2904;
+  --intl-olive: #3b4d2a;
+  --intl-text: #5a5a5a;
+}
+
+.intl-title {
+  margin: 0 0 24px;
+  color: #2f2f2f;
+  font-size: 41px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.intl-title--green {
+  color: var(--intl-green);
+}
+
+.intl-title--center {
+  text-align: center;
+}
+
+.intl-text,
+.intl-text p {
+  color: var(--intl-text);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.intl-text p {
+  margin: 0 0 18px;
+}
+
+/* ---------------------------------------------------------------- botões */
+
+.intl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 18px 60px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.intl-btn--outline {
+  border: 1px solid #ffffff;
+  font-family: var(--font-anek);
+}
+
+.intl-btn--green {
+  width: 100%;
+  margin-top: 16px;
+  border: 1px solid var(--intl-olive);
+  background: linear-gradient(233deg, #023619 3%, #255f45 100%);
+  font-family: "Sora", var(--font-anek);
+}
+
+/* -------------------------------------------------------------- abertura */
+
+.intl-hero {
+  display: flex;
+  align-items: center;
+  min-height: 691px;
+  background: #111111 url("img/hero-globo.webp") center / cover no-repeat;
+  color: #ffffff;
+}
+
+.intl-hero__inner {
+  max-width: 1140px;
+}
+
+.intl-hero h1 {
+  max-width: 600px;
+  margin: 0 0 12px;
+  font-size: 57px;
+  font-weight: 600;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.intl-hero p {
+  max-width: 600px;
+  margin: 0 0 32px;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.intl-hero .intl-btn {
+  min-width: 565px;
+}
+
+/* ------------------------------------------------------ por que investir */
+
+.intl-why {
+  padding-block: 60px;
+}
+
+.intl-why__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 536px) minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+  max-width: 1140px;
+}
+
+.intl-why img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* --------------------------------------------------------- os módulos */
+
+.intl-path {
+  padding-block: 90px;
+  background: var(--mist);
+}
+
+.intl-path__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+  max-width: 1120px;
+  margin: 0 auto 32px;
+}
+
+.intl-path__head .intl-title {
+  margin: 0;
+  font-size: 46px;
+}
+
+.intl-path__head p {
+  margin: 0;
+  color: var(--intl-olive);
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+.flip-grid {
+  display: grid;
+  gap: 24px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.flip-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.flip-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 24px;
+}
+
+/*
+ * Cartão de dupla face: a frente traz o nome e a chamada do módulo; o verso,
+ * que entra empurrando a frente no hover ou no foco, traz a descrição. As duas
+ * faces estão no HTML, então o conteúdo inteiro é lido por quem usa leitor de
+ * tela e por quem não usa mouse (o cartão recebe foco pelo teclado).
+ */
+.flip {
+  position: relative;
+  height: 337px;
+  border-radius: 12px;
+  overflow: hidden;
+  outline-offset: 4px;
+}
+
+.flip__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px;
+  font-family: var(--font-poppins);
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flip__face h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.flip__face p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.flip__face--front {
+  background: #ffffff;
+  color: var(--intl-green);
+}
+
+.flip__face--front p {
+  color: #636363;
+}
+
+.flip__face--back {
+  background: var(--intl-green);
+  color: #ffffff;
+  /* Um pouco além de 100% para a borda do verso não aparecer na frente. */
+  transform: translateX(calc(100% + 2px));
+}
+
+.flip:hover .flip__face--front,
+.flip:focus-within .flip__face--front,
+.flip:focus .flip__face--front {
+  transform: translateX(-100%);
+}
+
+.flip:hover .flip__face--back,
+.flip:focus-within .flip__face--back,
+.flip:focus .flip__face--back {
+  transform: translateX(0);
+}
+
+/* ------------------------------------------------------------ diferenciais */
+
+.intl-diff {
+  padding-block: 50px;
+}
+
+.intl-diff .intl-title {
+  margin-bottom: 12px;
+}
+
+.intl-diff__lead {
+  margin: 0 0 24px;
+  color: #2f2f2f;
+  font-size: 17px;
+  text-align: center;
+}
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.diff-card {
+  padding: 30px;
+  border-radius: 12px;
+  background: var(--mist);
+  text-align: center;
+}
+
+.diff-card h3 {
+  margin: 0 0 16px;
+  color: var(--intl-green);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.diff-card p {
+  margin: 0;
+  color: #7a7a7a;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------- convite final */
+
+.intl-cta {
+  padding-block: 60px;
+  background: var(--mist);
+}
+
+.intl-cta__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 566px) minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+  max-width: 1140px;
+}
+
+.intl-cta img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* -------------------------------------------------------------- dúvidas */
+
+.intl-faq {
+  padding-block: 50px 64px;
+}
+
+.intl-faq__box {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 24px 36px;
+  border-radius: 12px;
+  background: var(--mist);
+}
+
+.intl-faq__box summary {
+  position: relative;
+  display: block;
+  padding: 14px 40px 14px 0;
+  color: #7a7a7a;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.intl-faq__box details[open] summary {
+  color: #424242;
+}
+
+.intl-faq__box summary::-webkit-details-marker {
+  display: none;
+}
+
+.intl-faq__box summary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.intl-faq__box details[open] summary::after {
+  transform: translateY(-30%) rotate(225deg);
+}
+
+.intl-faq__box p {
+  margin: 0 0 16px;
+  color: #424242;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------- responsivo */
+
+@media (max-width: 1024px) {
+  .flip-grid--3,
+  .diff-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .intl-path__head {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .intl-hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 560px;
+  }
+
+  /* Overlay preto para manter a leitura sobre a foto. */
+  .intl-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .intl-hero h1 {
+    font-size: 38px;
+  }
+
+  .intl-hero p {
+    font-size: 19px;
+  }
+
+  .intl-hero .intl-btn {
+    min-width: 0;
+    width: 100%;
+    padding-inline: 20px;
+  }
+
+  .intl-title,
+  .intl-path__head .intl-title {
+    font-size: 30px;
+  }
+
+  .intl-why__inner,
+  .intl-cta__inner,
+  .flip-grid--3,
+  .flip-grid--2,
+  .diff-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flip {
+    height: 300px;
+  }
+
+  .intl-btn--green {
+    padding-inline: 20px;
+  }
+
+  .intl-faq__box {
+    padding: 16px 20px;
+  }
+
+  .intl-faq__box summary {
+    font-size: 17px;
+  }
+}

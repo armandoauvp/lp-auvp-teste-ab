@@ -1,0 +1,44 @@
+/*
+ * Política de privacidade: texto jurídico copiado do WordPress, sem as fontes e os
+ * tamanhos inline que o editor tinha deixado em cada trecho.
+ */
+
+.legal {
+  overflow-wrap: anywhere;
+  max-width: 950px;
+  padding-block: 64px 96px;
+  color: #000000;
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.legal p {
+  margin: 0 0 16px;
+}
+
+.legal .text-center {
+  text-align: center;
+}
+
+.legal ol,
+.legal ul {
+  margin: 0 0 16px;
+  padding-left: 28px;
+}
+
+.legal li + li {
+  margin-top: 6px;
+}
+
+.legal a {
+  color: #b8860b;
+  word-break: break-word;
+}
+
+@media (max-width: 767px) {
+  .legal {
+    padding-block: 40px 64px;
+    font-size: 15px;
+  }
+}
