@@ -4,6 +4,7 @@
  *     dist/index.html        índice (indice/index.html)
  *     dist/institucional/    página institucional (Vite + React)
  *     dist/escola/           LP da Escola (Vite)
+ *     dist/auvp-sempre/      página da AUVP Sempre (HTML puro, copiada)
  *
  * A mesma pasta serve o GitHub Pages e a Vercel. O que muda entre os dois é
  * só o prefixo de URL, lido do ambiente:
@@ -16,7 +17,7 @@
  * Ver docs/DEPLOY.md.
  */
 import { spawnSync } from "node:child_process";
-import { copyFile, mkdir, rm, writeFile } from "node:fs/promises";
+import { copyFile, cp, mkdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
@@ -55,6 +56,11 @@ run("escola", {
 });
 
 await mkdir(dist, { recursive: true });
+// HTML puro, sem build: index.html, style.css, script.js e img/ vão como estão.
+// Os caminhos são relativos, então funcionam na raiz e sob subcaminho do Pages.
+await cp(path.join(root, "auvp-sempre"), path.join(dist, "auvp-sempre"), {
+  recursive: true,
+});
 await copyFile(
   path.join(root, "indice/index.html"),
   path.join(dist, "index.html"),

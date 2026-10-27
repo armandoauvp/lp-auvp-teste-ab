@@ -1,12 +1,13 @@
 # Publicação
 
-O repositório gera **um único site estático** em `dist/`, com três endereços:
+O repositório gera **um único site estático** em `dist/`, com quatro endereços:
 
 | Caminho           | Origem                             |
 | ----------------- | ---------------------------------- |
 | `/`               | `indice/index.html`, o índice      |
 | `/institucional/` | `institucional/`, Vite + React     |
 | `/escola/`        | `escola/`, a LP da Escola com Vite |
+| `/auvp-sempre/`   | `auvp-sempre/`, HTML puro copiado  |
 
 A mesma pasta serve o **GitHub Pages** e a **Vercel**. Quem monta tudo é
 `scripts/build.mjs`, chamado por `npm run build` na raiz.
@@ -70,7 +71,7 @@ URL canônica sai de `VERCEL_PROJECT_PRODUCTION_URL`, que a Vercel define sozinh
 Para fixar outra (domínio próprio, por exemplo), crie a variável `SITE_URL` em
 **Settings → Environment Variables**.
 
-Cada PR ganha um preview da Vercel com as três páginas.
+Cada PR ganha um preview da Vercel com todas as páginas.
 
 ---
 

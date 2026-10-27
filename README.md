@@ -5,13 +5,19 @@ num único site estático:
 
 | Caminho           | Pasta            | O que é                                    |
 | ----------------- | ---------------- | ------------------------------------------ |
-| `/`               | `indice/`        | Índice com links para as duas páginas      |
+| `/`               | `indice/`        | Índice com links para as páginas           |
 | `/institucional/` | `institucional/` | Página institucional (Vite + React)        |
 | `/escola/`        | `escola/`        | Landing page da Escola (Vite + Tailwind 3) |
+| `/auvp-sempre/`   | `auvp-sempre/`   | Página da AUVP Sempre (HTML puro)          |
 
 O resto deste README trata da página institucional. A LP da Escola é HTML
 editado direto em `escola/index.html`; os masters das imagens dela estão em
 `escola/imagens-originais/`.
+
+A página da AUVP Sempre é HTML puro, sem build: `auvp-sempre/index.html`, com
+`style.css`, `script.js` e as imagens em `auvp-sempre/img/`. O build só copia a
+pasta. A estrutura segue as regras de teste A/B (versão B em `b.html` na mesma
+pasta, mesmo `<link rel="canonical">`).
 
 ## Página institucional
 
