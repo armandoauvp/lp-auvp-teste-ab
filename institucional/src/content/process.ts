@@ -31,10 +31,10 @@ export const stages: Stage[] = [
       {
         title: "Formação de 8 semanas",
         description:
-          "Oito módulos liberados progressivamente, do zero ao avançado.",
+          "Sete módulos e um bônus, liberados progressivamente, do zero ao avançado.",
       },
       {
-        title: "+120 aulas e 8 livros",
+        title: "+100 aulas e 8 livros",
         description:
           "Aulas gravadas e livros digitais exclusivos, registrados na Biblioteca Nacional.",
       },

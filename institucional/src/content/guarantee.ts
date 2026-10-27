@@ -3,6 +3,6 @@
 export const guarantee = {
   title: "Confiamos no que ensinamos.",
   description:
-    "Se, ao concluir o treinamento, o aluno não se sentir preparado para investir com autonomia, a AUVP reembolsa 100% do valor pago.",
+    "Se o aluno concluir o curso, fizer as provas, receber o certificado e ainda não se sentir confiante para investir, a AUVP devolve 100% do valor pago em até 7 dias após a emissão do certificado. A garantia vale durante a vigência da turma: 1 ano a partir da compra.",
   ctaLabel: "Faça sua Análise de Perfil",
 } as const;

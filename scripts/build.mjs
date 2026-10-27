@@ -16,10 +16,23 @@
  * - `SITE_URL`: endereço público, usado na URL canônica do institucional. Na
  *   Vercel, se ausente, sai de `VERCEL_PROJECT_PRODUCTION_URL`.
  *
+ * - `SITE_INDEXAVEL`: só com `true` o site pode ser indexado por buscadores.
+ *   Sem ela (homologação), todo HTML sai com `noindex, nofollow` e a raiz
+ *   ganha um robots.txt que bloqueia tudo, para o homolog não concorrer com o
+ *   auvp.com.br no Google.
+ *
  * Ver docs/DEPLOY.md.
  */
 import { spawnSync } from "node:child_process";
-import { copyFile, cp, mkdir, rm, writeFile } from "node:fs/promises";
+import {
+  copyFile,
+  cp,
+  mkdir,
+  readFile,
+  readdir,
+  rm,
+  writeFile,
+} from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
@@ -85,5 +98,26 @@ await copyFile(
 // iniciadas por underscore. Nada aqui depende disso hoje, mas desligar evita
 // a surpresa no dia em que depender.
 await writeFile(path.join(dist, ".nojekyll"), "");
+
+// Homologação fora dos buscadores. Ver o comentário do topo.
+if (process.env.SITE_INDEXAVEL !== "true") {
+  const robots = '<meta name="robots" content="noindex, nofollow" />';
+  const paginas = (await readdir(dist, { recursive: true })).filter(
+    (f) => f.endsWith(".html") && !f.includes("~partytown"),
+  );
+  for (const pagina of paginas) {
+    const arquivo = path.join(dist, pagina);
+    const html = await readFile(arquivo, "utf8");
+    const comMeta = /<meta\s+name="robots"[^>]*>/i.test(html)
+      ? html.replace(/<meta\s+name="robots"[^>]*>/gi, robots)
+      : html.replace(/<head>/i, `<head>\n    ${robots}`);
+    await writeFile(arquivo, comMeta);
+  }
+  await writeFile(
+    path.join(dist, "robots.txt"),
+    "# Homologação: nada aqui deve ser indexado.\nUser-agent: *\nDisallow: /\n",
+  );
+  console.log(`noindex aplicado em ${paginas.length} páginas (homologação)`);
+}
 
 console.log(`\nSite montado em ${dist} (base "${base || "/"}")`);

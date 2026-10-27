@@ -60,8 +60,47 @@
       rel="stylesheet"
       href="https://api.fontshare.com/v2/css?f%5B%5D=sentient@300,400,500,700&display=swap"
     />
+    <!-- Google Tag Manager e Microsoft Clarity: os mesmos da LP da Escola e das
+         demais páginas do site, para a visita e a conversão desta página entrarem
+         na mesma medição. -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0];
+        var j = d.createElement(s);
+        var dl = l !== "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WXXK697");
+    </script>
+    <script>
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "se9px68leh");
+    </script>
   </head>
   <body class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WXXK697"
+        title="Google Tag Manager"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
     <!-- O build troca o comentário abaixo pelo HTML pré-renderizado. -->
     <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.tsx"></script>

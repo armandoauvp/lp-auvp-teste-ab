@@ -23,7 +23,7 @@ export type Module = {
 export const curriculum = {
   title: "Conteúdo programático.",
   subtitle:
-    "Oito módulos que levam o aluno do primeiro conceito à gestão autônoma da própria carteira.",
+    "Sete módulos e um bônus que levam o aluno do primeiro conceito à gestão autônoma da própria carteira.",
 } as const;
 
 export const modules: Module[] = [

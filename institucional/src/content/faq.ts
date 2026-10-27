@@ -50,7 +50,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: "Como funciona a formação?",
         answer:
-          "São oito módulos liberados progressivamente ao longo de oito semanas, do zero ao avançado, com mais de 120 aulas gravadas, oito livros digitais exclusivos e atualizações semanais de mercado ao vivo com Raul Sena.",
+          "São sete módulos e um bônus, liberados progressivamente ao longo de oito semanas, do zero ao avançado, com mais de 100 aulas gravadas, oito livros digitais exclusivos e atualizações semanais de mercado ao vivo com Raul Sena.",
       },
       {
         question: "O que é o Diagrama do Cerrado?",
@@ -71,7 +71,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: "Qual é a garantia oferecida pela AUVP?",
         answer:
-          "Se, ao concluir o treinamento, o aluno não se sentir preparado para investir com autonomia, a AUVP reembolsa 100% do valor pago.",
+          "Se o aluno concluir o curso, fizer as provas, receber o certificado e ainda não se sentir confiante para investir, a AUVP devolve 100% do valor pago em até 7 dias após a emissão do certificado. A garantia vale durante a vigência da turma: 1 ano a partir da compra.",
       },
       {
         question: "A AUVP recebe comissão por indicar investimentos?",
@@ -92,7 +92,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: "Por quanto tempo tenho acesso ao conteúdo?",
         answer:
-          "O aluno mantém acesso à plataforma, às ferramentas e à comunidade enquanto for membro da AUVP, incluindo as atualizações feitas no conteúdo ao longo do tempo.",
+          "O acesso é válido por 1 ano, contado a partir da aula inaugural, incluindo as atualizações feitas no conteúdo nesse período. Depois disso, o aluno pode continuar pela AUVP Sempre, o plano de renovação.",
       },
       {
         question: "As aulas são gravadas?",

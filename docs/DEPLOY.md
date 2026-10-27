@@ -15,6 +15,20 @@ A mesma pasta serve o **GitHub Pages** e a **Vercel**. Quem monta tudo é
 
 ---
 
+## Homologação fora do Google
+
+Enquanto o site for homologação, nada nele deve ser indexado: ele repete o
+conteúdo do auvp.com.br e concorreria com ele nos buscadores. Por isso o
+`scripts/build.mjs`, por padrão, coloca `<meta name="robots" content="noindex, nofollow">`
+em todas as páginas e grava na raiz um `robots.txt` que bloqueia tudo.
+
+Para publicar como produção, defina `SITE_INDEXAVEL=true` no ambiente do build
+(na Vercel: **Settings → Environment Variables**; no Pages: no `env` do passo de
+build em `.github/workflows/deploy.yml`). Sem ela, o build continua em modo
+homologação.
+
+---
+
 ## GitHub Pages
 
 Publicado pelo workflow `.github/workflows/deploy.yml` a cada push na `main`.
