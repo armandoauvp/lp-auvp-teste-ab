@@ -1,5 +1,6 @@
 import { asset } from "@/lib/asset";
 import { cn } from "@/lib/cn";
+import { srcset } from "@/lib/srcset";
 
 type FigureProps = {
   src: string | null;
@@ -17,6 +18,11 @@ type FigureProps = {
   imageClassName?: string;
   ratio?: "3/4" | "4/3" | "3/2" | "16/9" | "1/1" | "auto";
   priority?: boolean;
+  /**
+   * Largura em que a foto aparece, para o navegador escolher a versão do
+   * `srcset`. O padrão serve a foto que ocupa meia coluna a partir de `lg`.
+   */
+  sizes?: string;
   tone?: "light" | "dark";
 };
 
@@ -46,6 +52,7 @@ export function Figure({
   imageClassName,
   ratio = "4/3",
   priority = false,
+  sizes = "(min-width: 1024px) 50vw, 100vw",
   tone = "light",
 }: FigureProps) {
   return (
@@ -61,6 +68,8 @@ export function Figure({
         {src ? (
           <img
             src={asset(src)}
+            srcSet={srcset(src)}
+            sizes={srcset(src) ? sizes : undefined}
             alt={alt}
             loading={priority ? "eager" : "lazy"}
             fetchPriority={priority ? "high" : undefined}

@@ -104,7 +104,7 @@ export function Curriculum() {
                         index === active ? "text-ink" : "text-ink/35",
                       )}
                     />
-                    <span className="eyebrow text-graphite/60">
+                    <span className="eyebrow text-graphite">
                       {module.number === "Bônus"
                         ? "Módulo bônus"
                         : `Módulo ${module.number}`}

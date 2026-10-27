@@ -34,7 +34,7 @@ export function Community() {
               caption={community.photos[0].caption}
               brief={community.photos[0].brief}
               ratio="3/2"
-              priority
+              sizes="(min-width: 1280px) 1216px, 100vw"
             />
           </Reveal>
 

@@ -1,5 +1,30 @@
 @import "tailwindcss";
 
+/* Sentient servida pelo site (ver o comentário em index.html). O 600 que a
+   página usa cai no 700, e o itálico é sintetizado do 400, como já era com a
+   folha da Fontshare. */
+@font-face {
+  font-family: "Sentient";
+  src: url("/fonts/sentient-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sentient";
+  src: url("/fonts/sentient-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sentient";
+  src: url("/fonts/sentient-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ==========================================================================
    AUVP, Escola de Investimentos: tokens de design
 
@@ -161,26 +186,20 @@
 }
 
 /*
- * Numeral vazado da lista do conteudo programatico, que preenche quando o
- * item cruza a faixa central da tela.
- *
- * O preenchimento e zerado por -webkit-text-fill-color, e nao por
- * `color: transparent`: o contorno usa currentColor, e zerar a cor levaria o
- * traco junto. Sem suporte a text-stroke o numeral nasce solido, entao a
- * leitura nunca depende do efeito.
+ * Numeral do conteudo programatico. Preenchido sempre (nada de numero so em
+ * contorno): cinza medio fora de foco e tinta quando o item cruza a faixa
+ * central da tela. O cinza (#8a8a8a, 3,4:1 sobre papel) passa no contraste de
+ * texto grande; o contorno sobre --color-paper-line ficava em 1,3:1 e era
+ * reprovado no PageSpeed. O nome da utilidade ficou o mesmo para nao mexer
+ * nos componentes.
  */
 @utility numeral-vazado {
-  color: var(--color-paper-line);
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px currentColor;
-  transition:
-    color 450ms ease,
-    -webkit-text-fill-color 450ms ease;
+  color: #8a8a8a;
+  transition: color 450ms ease;
 }
 
 @utility numeral-vazado-ativo {
   color: var(--color-ink);
-  -webkit-text-fill-color: var(--color-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {

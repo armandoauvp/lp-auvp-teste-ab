@@ -116,12 +116,22 @@
 
     <!-- Preconnect para CDN de imagens -->
     <link rel="preconnect" href="https://cdn.asupernova.com.br" crossorigin />
-    <!-- Preload hero image (critical LCP resource) -->
+    <!-- Preload do fundo da dobra inicial (recurso do LCP). Uma versão por
+         tela, com o mesmo corte de media do .hero-bg em src/style.css. -->
     <link
       rel="preload"
       as="image"
-      href="https://cdn.asupernova.com.br/lp-auvp/vite/hero.webp?raw=true"
+      href="/imagens/hero-1440.webp"
       type="image/webp"
+      media="(max-width: 1023px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/imagens/hero-2560.webp"
+      type="image/webp"
+      media="(min-width: 1024px)"
       fetchpriority="high"
     />
 
@@ -440,21 +450,29 @@
       <div class="auvp-container">
         <div class="split-layout">
           <div class="split-visual">
+            <!-- Servidas pelo site, em tamanhos para cada tela. width/height
+                 iguais à proporção real de cada arquivo: com 600x400 (3:2)
+                 sobre uma foto 16:9, a dobra pulava ao carregar (CLS). -->
             <picture>
               <source
                 media="(min-width: 768px)"
-                srcset="
-                  https://cdn.asupernova.com.br/lp-auvp/vite/onde%20sua%20vida%20financeira%20se%20resolve%20desktop.webp
-                "
+                srcset="/imagens/onde-sua-vida-desktop.webp"
+                width="1200"
+                height="728"
               />
               <img
-                src="https://cdn.asupernova.com.br/lp-auvp/vite/onde%20sua%20vida%20financeira%20se%20resolve%20mobile.webp"
+                src="/imagens/onde-sua-vida-1024.webp"
+                srcset="
+                  /imagens/onde-sua-vida-640.webp   640w,
+                  /imagens/onde-sua-vida-1024.webp 1024w
+                "
+                sizes="calc(100vw - 3rem)"
                 alt="AUVP Capital"
                 class="hover:tw-scale-105 tw-transition-transform tw-duration-700 tw-ease-in-out"
                 loading="lazy"
                 decoding="async"
-                width="600"
-                height="400"
+                width="1024"
+                height="576"
               />
             </picture>
           </div>
@@ -710,8 +728,8 @@
             class="tw-w-full tw-h-full tw-object-cover hover:tw-scale-105 tw-transition-transform tw-duration-700 tw-ease-in-out"
             loading="lazy"
             decoding="async"
-            width="600"
-            height="400"
+            width="1761"
+            height="1080"
           />
         </div>
       </div>
@@ -876,8 +894,8 @@
          class="tw-w-full tw-block tw-h-auto"
         loading="lazy"
         decoding="async"
-        width="600"
-        height="400"
+        width="1841"
+        height="1938"
       />
     </div>
 
@@ -890,7 +908,7 @@
           class="tw-w-full md:tw-w-1/2 tw-mb-10 md:tw-mb-0 tw-pr-0 md:tw-pr-12"
         >
           <span
-            class="tw-inline-block tw-bg-[#fdf8e9] tw-text-[#d4a73d] tw-font-bold tw-text-[11px] md:tw-text-xs tw-px-3 tw-py-1 tw-mb-4 tw-uppercase"
+            class="tw-inline-block tw-bg-[#fdf8e9] tw-text-[#8a6a1c] tw-font-bold tw-text-[11px] md:tw-text-xs tw-px-3 tw-py-1 tw-mb-4 tw-uppercase"
             >Inscrições abertas para a turma
             <span class="js-numero-turma">62</span></span
           >
@@ -918,7 +936,7 @@
                 >00</span
               >
               <span
-                class="tw-block tw-text-[9px] md:tw-text-[11px] tw-font-bold tw-text-[#efbf4e] tw-uppercase tw-mt-1 md:tw-mt-2"
+                class="tw-block tw-text-[10px] md:tw-text-[11px] tw-font-bold tw-text-[#8a6a1c] tw-uppercase tw-mt-1 md:tw-mt-2"
                 >Dias</span
               >
             </div>
@@ -932,7 +950,7 @@
                 >00</span
               >
               <span
-                class="tw-block tw-text-[9px] md:tw-text-[11px] tw-font-bold tw-text-[#efbf4e] tw-uppercase tw-mt-1 md:tw-mt-2"
+                class="tw-block tw-text-[10px] md:tw-text-[11px] tw-font-bold tw-text-[#8a6a1c] tw-uppercase tw-mt-1 md:tw-mt-2"
                 >Horas</span
               >
             </div>
@@ -946,7 +964,7 @@
                 >00</span
               >
               <span
-                class="tw-block tw-text-[9px] md:tw-text-[11px] tw-font-bold tw-text-[#efbf4e] tw-uppercase tw-mt-1 md:tw-mt-2"
+                class="tw-block tw-text-[10px] md:tw-text-[11px] tw-font-bold tw-text-[#8a6a1c] tw-uppercase tw-mt-1 md:tw-mt-2"
                 >Minutos</span
               >
             </div>
@@ -960,7 +978,7 @@
                 >00</span
               >
               <span
-                class="tw-block tw-text-[9px] md:tw-text-[11px] tw-font-bold tw-text-[#efbf4e] tw-uppercase tw-mt-1 md:tw-mt-2"
+                class="tw-block tw-text-[10px] md:tw-text-[11px] tw-font-bold tw-text-[#8a6a1c] tw-uppercase tw-mt-1 md:tw-mt-2"
                 >Segundos</span
               >
             </div>
@@ -1338,6 +1356,7 @@
             <a
               class="news-card-link"
               href="https://minha.auvp.com.br/"
+              aria-label="Conhecer o Minha AUVP"
               target="_blank"
               rel="noopener"
               >Conhecer
@@ -1377,6 +1396,7 @@
             <a
               class="news-card-link"
               href="https://www.auvpetfs.com.br/"
+              aria-label="Conhecer os ETFs AUVP"
               target="_blank"
               rel="noopener"
               >Conhecer
@@ -1773,8 +1793,8 @@
               class="hover:tw-scale-105 tw-transition-transform tw-duration-700 tw-ease-in-out"
               loading="lazy"
               decoding="async"
-              width="600"
-              height="400"
+              width="1841"
+              height="1938"
             />
           </div>
           <div class="split-content">
@@ -2115,7 +2135,7 @@
             class="tw-bg-white tw-p-5 md:tw-p-6 md:tw-absolute md:tw-bottom-10 md:tw-left-10 md:tw-max-w-xs"
           >
             <span
-              class="tw-inline-block tw-bg-[#fdf8e9] tw-text-[#d4a73d] tw-font-bold tw-text-[11px] tw-px-3 tw-py-1 tw-uppercase tw-mb-3"
+              class="tw-inline-block tw-bg-[#fdf8e9] tw-text-[#8a6a1c] tw-font-bold tw-text-[11px] tw-px-3 tw-py-1 tw-uppercase tw-mb-3"
               >Palestras</span
             >
             <h3
@@ -2715,11 +2735,11 @@
           >
             <!-- Informações -->
             <div class="tw-col-span-1">
-              <h4
+              <h3
                 class="tw-text-white tw-font-bold tw-text-lg tw-mb-6"
               >
                 Informações
-              </h4>
+              </h3>
               <div class="tw-flex tw-flex-col tw-gap-4">
                 <a
                   href="https://www.auvp.com.br/termos-de-uso/"
@@ -2748,11 +2768,11 @@
 
             <!-- Nossos canais -->
             <div class="tw-col-span-1">
-              <h4
+              <h3
                 class="tw-text-white tw-font-bold tw-text-lg tw-mb-6"
               >
                 Nossos canais
-              </h4>
+              </h3>
               <div class="tw-flex tw-flex-col tw-gap-4">
                 <a href="https://comunidade.auvp.com.br/" class="footer-link"
                   >Comunidade</a
@@ -2816,11 +2836,11 @@
 
             <!-- Outros produtos (Ocupa 2 espaços no grid desktop) -->
             <div class="tw-col-span-1 sm:tw-col-span-2">
-              <h4
+              <h3
                 class="tw-text-white tw-font-bold tw-text-lg tw-mb-6"
               >
                 Outros produtos
-              </h4>
+              </h3>
               <div class="tw-grid tw-grid-cols-2 tw-gap-x-4 tw-gap-y-4">
                 <div class="tw-flex tw-flex-col tw-gap-4">
                   <a href="https://www.auvpcapital.com.br/" class="footer-link"

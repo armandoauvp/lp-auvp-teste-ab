@@ -89,6 +89,14 @@ Para fixar outra (domínio próprio, por exemplo), crie a variável `SITE_URL` e
 
 Cada PR ganha um preview da Vercel com todas as páginas.
 
+**Cabeçalhos.** O `vercel.json` manda em todas as páginas `X-Frame-Options:
+SAMEORIGIN` (ninguém de fora embute o site num iframe), `Cross-Origin-Opener-Policy:
+same-origin-allow-popups`, `X-Content-Type-Options: nosniff` e
+`Referrer-Policy: strict-origin-when-cross-origin`. Os arquivos com hash em
+`/assets/` e `/institucional/assets/` saem com cache de um ano (`immutable`). Se
+alguma página precisar ser embutida em outro domínio, troque o
+`X-Frame-Options` por uma CSP `frame-ancestors` com esse domínio.
+
 **Testes A/B só funcionam na Vercel.** O `middleware.js` da raiz é um Routing
 Middleware: a Vercel o detecta sozinha, sem configuração, e ele divide o
 tráfego das páginas listadas em `experiments.json`. No GitHub Pages não há
@@ -125,14 +133,20 @@ desligar esse processamento.
 
 ## Peso das imagens
 
-Não há otimizador de imagem: o navegador baixa o arquivo original, sem
-redimensionamento por breakpoint. Antes de adicionar qualquer foto, gere a
+Não há otimizador de imagem no servidor: as versões por tamanho de tela são
+geradas no repositório (abaixo). Antes de adicionar qualquer foto, gere a
 versão final no tamanho de uso (o padrão está em `docs/ASSETS.md`):
 
 ```bash
 npx sharp-cli --input foto.jpg --output institucional/public/images/foto.webp \
   resize 2000 --withoutEnlargement -- webp --quality 82
 ```
+
+Depois de pôr a foto em `institucional/public/images/`, rode
+`npm run imagens -w institucional`. Ele gera as versões de 640, 1024 e 1600 px
+em `public/images/variantes/` e atualiza `src/content/variantes.ts`; com isso a
+foto sai com `srcset`, e o celular baixa a versão do tamanho em que ela aparece.
+Faça commit dos arquivos gerados junto com a foto.
 
 O material do site antigo vive em `acervo/legado/`, **fora de `public/`**, de
 propósito: tudo que está em `public/` é copiado para o build e servido a cada

@@ -50,15 +50,18 @@
 
     <!--
       Sentient (Fontshare / Indian Type Foundry). É a serifa do logotipo da
-      AUVP e, por isso, a serifa do site. Não está no Google Fonts: vem do CDN
-      da fundição, no mesmo padrão que a landing da escola usa para a Satoshi.
-      A licença permite hospedar os .woff2 junto do site. Ver docs/BRAND.md.
+      AUVP e, por isso, a serifa do site. Os .woff2 (400, 500 e 700) ficam em
+      public/fonts/ e são servidos pelo próprio site: buscar a folha de estilo
+      no api.fontshare.com segurava a primeira pintura em ~750 ms no celular
+      (PageSpeed). A licença permite hospedar os arquivos. Os @font-face estão
+      em src/globals.css. O 500 é o peso do título da dobra inicial.
     -->
-    <link rel="preconnect" href="https://api.fontshare.com" />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin="" />
     <link
-      rel="stylesheet"
-      href="https://api.fontshare.com/v2/css?f%5B%5D=sentient@300,400,500,700&display=swap"
+      rel="preload"
+      href="/fonts/sentient-500.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
     <!-- Google Tag Manager e Microsoft Clarity: os mesmos da LP da Escola e das
          demais páginas do site, para a visita e a conversão desta página entrarem

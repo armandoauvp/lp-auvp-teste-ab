@@ -6,6 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { closing } from "@/content/closing";
 import { links, site } from "@/content/site";
 import { asset } from "@/lib/asset";
+import { srcset } from "@/lib/srcset";
 
 /**
  * O convite, com o prazo da próxima turma. Não consta do roteiro original, mas
@@ -26,6 +27,8 @@ export function ClosingCta() {
       {closing.photo.src ? (
         <img
           src={asset(closing.photo.src)}
+          srcSet={srcset(closing.photo.src)}
+          sizes="(max-aspect-ratio: 3/2) 150vh, 100vw"
           alt=""
           aria-hidden
           loading="lazy"

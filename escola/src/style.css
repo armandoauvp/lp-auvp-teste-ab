@@ -133,12 +133,20 @@ img, picture, svg, video, iframe { display: block; max-width: 100%; border-radiu
 /* =========================================
    HERO STYLES
    ========================================= */
+/* Fundo servido pelo site: 39 KiB no computador e 16 KiB no celular, contra
+   538 KiB do arquivo do CDN. Sob a película de 80% a 95% de preto, a
+   compressão não aparece. O preload está no index.html. */
 .hero-bg {
-    background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('https://cdn.asupernova.com.br/lp-auvp/vite/hero.webp?raw=true');
+    background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('/imagens/hero-1440.webp');
     background-size: cover;
     background-position: top center;
     background-attachment: scroll;
     content-visibility: visible;
+}
+@media (min-width: 1024px) {
+    .hero-bg {
+        background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)), url('/imagens/hero-2560.webp');
+    }
 }
 
 /* =========================================
@@ -239,7 +247,7 @@ details[open] p { max-height: 1000px; opacity: 1; transform: translateY(0); tran
     --font-body: 'Satoshi', sans-serif;
 }
 #auvp-course-section { display: block; width: 100% !important; overflow-x: hidden; overflow-y: visible; box-sizing: border-box; margin: 0; }
-.auvp-glass-card { background: var(--glass-bg) !important; backdrop-filter: blur(24px) !important; -webkit-backdrop-filter: blur(24px) !important; border: 1px solid var(--border-default) !important; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04) !important; border-radius: 0 !important; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; overflow: hidden; }
+.auvp-glass-card { background: var(--glass-bg) !important; backdrop-filter: blur(24px) !important; -webkit-backdrop-filter: blur(24px) !important; border: 1px solid var(--border-default) !important; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04) !important; border-radius: 0 !important; overflow: hidden; }
 .header-content { text-align: center; margin-bottom: 40px; }
 .header-content h2 { color: var(--text-dark); font-family: var(--font-title) !important; font-weight: 700; font-size: 35px; margin-bottom: 16px; line-height: 1.1; letter-spacing: -0.02em; }
 .header-content .subtitle { color: var(--text-muted); font-family: var(--font-body) !important; font-size: 17px; margin: 0 auto; line-height: 1.6; font-weight: 400; }
@@ -467,10 +475,13 @@ details[open] p { max-height: 1000px; opacity: 1; transform: translateY(0); tran
 /* =========================================
    WIDGET FLUTUANTE WHATSAPP
    ========================================= */
+/* O pulso é um anel (::before) que cresce e some só com transform e opacity,
+   que a GPU anima sem repintar. Com box-shadow animado, o navegador repintava
+   o botão 30 vezes por segundo, para sempre (PageSpeed: animação não composta). */
 @keyframes wpp-pulse {
-    0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-    70%  { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    0%   { transform: scale(1);   opacity: 0.6; }
+    70%  { transform: scale(1.6); opacity: 0; }
+    100% { transform: scale(1.6); opacity: 0; }
 }
 .wpp-float {
     position: fixed;
@@ -490,10 +501,23 @@ details[open] p { max-height: 1000px; opacity: 1; transform: translateY(0); tran
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
-    animation: wpp-pulse 2s infinite;
     transition: transform 0.2s ease;
     text-decoration: none;
     flex-shrink: 0;
+    position: relative;
+}
+.wpp-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(37, 211, 102, 0.6);
+    animation: wpp-pulse 2s infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+@media (prefers-reduced-motion: reduce) {
+    .wpp-btn::before { animation: none; opacity: 0; }
 }
 .wpp-btn:hover { transform: scale(1.1); }
 .wpp-tooltip {

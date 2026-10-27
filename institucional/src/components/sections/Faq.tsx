@@ -38,7 +38,11 @@ export function Faq() {
               {faqCategories.map((category) => {
                 const selected = category.id === active;
                 return (
-                  <li key={category.id} className="shrink-0">
+                  <li
+                    key={category.id}
+                    role="presentation"
+                    className="shrink-0"
+                  >
                     <button
                       type="button"
                       role="tab"

@@ -129,6 +129,7 @@ export function Initiatives() {
                         href={partnership.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`Saiba mais sobre ${partnership.name}`}
                         className="eyebrow text-ink/70 hover:text-ink mt-2 inline-flex w-fit items-center gap-2 transition-colors duration-300"
                       >
                         Saiba mais

@@ -101,24 +101,18 @@ A faixa amarela é única na página. Repeti-la gasta o efeito.
 Sentient é a serifa do próprio logotipo da AUVP Escola, e por isso é a serifa do
 site: logo e títulos são literalmente a mesma letra, não uma aproximação.
 
-Ela não está no Google Fonts nem no Fontsource. Vem do CDN da
-fundição (Fontshare, Indian Type Foundry), no mesmo padrão que a landing de
-produção da escola já usa para a Satoshi:
+Ela não está no Google Fonts nem no Fontsource. Os `.woff2` da fundição
+(Fontshare, Indian Type Foundry) ficam em `institucional/public/fonts/` e são
+servidos pelo próprio site, com os `@font-face` em `src/globals.css` e
+`preload` do peso 500 (o do título da dobra inicial) no `index.html`. Até
+outubro de 2026 a página buscava a folha de estilo em `api.fontshare.com`, e o
+PageSpeed media ~750 ms de primeira pintura presos nela no celular. A licença
+permite hospedar os arquivos. A pilha de reserva é
+`Georgia, "Times New Roman", serif`.
 
-```html
-<link
-  rel="stylesheet"
-  href="https://api.fontshare.com/v2/css?f%5B%5D=sentient@300,400,500,700&display=swap"
-/>
-```
-
-A licença permite hospedar os arquivos junto do site. Vale fazer quando alguém
-tiver os `.woff2` em mãos: remove uma dependência de terceiro e uma conexão a
-mais no carregamento. A pilha de reserva é `Georgia, "Times New Roman", serif`,
-que mantém a página legível se o CDN falhar.
-
-**Só os pesos que existem: 300, 400, 500 e 700.** Pedir 600 faz o navegador
-sintetizar e engordar o texto sem aviso.
+**Pesos servidos: 400, 500 e 700.** O 600 (`font-semibold`) cai no 700. O
+300 existe na fundição, mas a página não usa; para usá-lo, acrescente o
+arquivo e o `@font-face`.
 
 | Papel               | Família           | Peso | Observação                                                |
 | ------------------- | ----------------- | ---- | --------------------------------------------------------- |

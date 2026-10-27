@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { hero } from "@/content/hero";
 import { links, site } from "@/content/site";
 import { asset } from "@/lib/asset";
+import { srcset } from "@/lib/srcset";
 
 /**
  * Dobra 01.
@@ -36,6 +37,13 @@ export function Hero() {
         {hero.photo.src ? (
           <img
             src={asset(hero.photo.src)}
+            srcSet={srcset(hero.photo.src)}
+            /* A foto cobre a dobra (min-h-[100svh]). Em tela mais estreita
+               que 3/2 ela escala pela altura e a largura desenhada seria
+               1,5 × a altura da tela. Pedimos 1 × a altura de propósito: sob
+               a película escura do hero a diferença não aparece, e o celular
+               baixa a versão de 1600 px em vez da de 2400. */
+            sizes="(max-aspect-ratio: 3/2) 100vh, 100vw"
             alt={hero.photo.alt}
             fetchPriority="high"
             /* Centro em qualquer largura. A fotografia é uma plateia
