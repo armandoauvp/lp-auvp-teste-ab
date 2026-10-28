@@ -5,21 +5,6 @@ function handler(event) {
   var response = event.response;
   if (response.statusCode !== 200) return response;
 
-  // Arquivo que não existe (robots.txt, llms.txt, .js...) cai na home pelo erro 403/404 do S3.
-  // A home continua sendo o corpo, mas o status tem de ser 404 para não passar por ele.
-  var type = response.headers["content-type"];
-  var name = request.uri.split("/").pop();
-  if (
-    type &&
-    type.value.indexOf("text/html") === 0 &&
-    name.indexOf(".") !== -1 &&
-    name.slice(-5) !== ".html"
-  ) {
-    response.statusCode = 404;
-    response.statusDescription = "Not Found";
-    return response;
-  }
-
   for (var i = 0; i < TESTS.length; i++) {
     var t = TESTS[i];
     var variant =
