@@ -11,7 +11,7 @@ export const mission = {
    * rodeio para chegar na AUVP Capital.
    */
   paragraphs: [
-    "A maioria dos brasileiros nunca teve acesso a um ensino financeiro honesto. Foi para mudar isso que a AUVP nasceu, em 2020, com a missão de transformar o Brasil em um país de investidores.",
+    "A maioria dos brasileiros nunca teve acesso a um ensino financeiro honesto. Foi para mudar isso que a AUVP nasceu, fundada por Raul Sena em 2020, com a missão de transformar o Brasil em um país de investidores.",
     "O que começou como uma escola de investimentos virou um ecossistema financeiro completo, da educação à gestão de patrimônio. A AUVP Capital é reconhecida pelo BTG Pactual como a consultoria nº 1 do país por dois anos consecutivos.",
   ],
   photo: {

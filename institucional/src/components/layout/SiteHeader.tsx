@@ -87,11 +87,11 @@ export function SiteHeader() {
           <img
             src={asset(
               onPaper
-                ? "/logos/auvp-escola-serif-preta.svg"
-                : "/logos/auvp-escola-serif-branca.svg",
+                ? "/logos/auvp-escola-serif-olho-preta.svg"
+                : "/logos/auvp-escola-serif-olho-branca.svg",
             )}
             alt="AUVP Escola de Investimentos"
-            width={1003}
+            width={1237}
             height={203}
             fetchPriority="high"
             className="h-10 w-auto md:h-12"

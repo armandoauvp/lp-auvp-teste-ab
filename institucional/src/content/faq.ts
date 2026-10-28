@@ -39,7 +39,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: "Quem fundou a AUVP?",
         answer:
-          "A AUVP foi fundada em 2020 por Raul Sena, o Investidor Sardinha. Investidor independente, ele idealizou a instituição para levar educação financeira honesta e de qualidade a qualquer pessoa, e segue à frente do conteúdo e das aulas ao vivo da escola.",
+          "A AUVP foi fundada em 2020 por Raul Sena, também conhecido pelo canal o Investidor Sardinha. Investidor independente, ele idealizou a instituição para levar educação financeira honesta e de qualidade a qualquer pessoa, e segue à frente do conteúdo e das aulas ao vivo da escola. Hoje, é CEO da AUVP Capital, que além do braço educacional, também foi eleita a melhor consultoria de investimentos pelo segundo ano consecutivo pelo Ranking BTG Pactual.",
       },
     ],
   },

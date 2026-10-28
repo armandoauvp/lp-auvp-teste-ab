@@ -21,12 +21,15 @@ export function SiteFooter() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="flex flex-col items-start gap-6">
             <img
-              src={asset("/logos/auvp-escola-serif-branca.svg")}
+              src={asset("/logos/auvp-escola-serif-olho-branca.svg")}
               alt="AUVP Escola de Investimentos"
-              width={1003}
+              width={1237}
               height={203}
               loading="lazy"
-              className="h-12 w-auto md:h-14"
+              // Pela largura, não pela altura: com o olho o logo ficou mais
+              // largo que a coluna entre 1024 e 1440px, e com altura fixa ele
+              // era espremido na horizontal.
+              className="h-auto w-72 max-w-full md:w-80"
             />
             <p className="max-w-[30ch] text-sm leading-relaxed">
               {site.tagline}. Fundada em {site.foundingYear} por {site.founder}.

@@ -649,6 +649,9 @@ details[open] p { max-height: 1000px; opacity: 1; transform: translateY(0); tran
 }
 .extra-card-img {
     width: 100%;
+    /* Sem isto, o height="360" do HTML vence o aspect-ratio e a capa de
+       640x360 sai num quadro mais alto, cortada nas laterais. */
+    height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 6px;

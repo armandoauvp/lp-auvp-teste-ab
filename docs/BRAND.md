@@ -271,6 +271,15 @@ em `institucional/public/logos/auvp-monograma.svg`, extraídos do primeiro grupo
 `auvp-escola-serif-preta.svg` e recortados na caixa exata das quatro letras. O
 componente React que os servia foi removido junto com o uso.
 
+### O logo leva o olho
+
+Sem o olho, o logo descaracteriza a marca (pedido do time, outubro de 2026). A
+barra e o rodapé usam `auvp-escola-serif-olho-branca.svg` e
+`auvp-escola-serif-olho-preta.svg`: o olho de `escola/olho-amarelo.svg` à
+esquerda do "AUVP", na altura das letras, sempre na mesma cor do texto (branco
+ou preto, nunca amarelo ou verde). Os arquivos sem o olho continuam na pasta
+como fonte dos contornos.
+
 ## Forma
 
 **Canto reto em tudo, exceto botão.** Card, faixa, moldura de foto e régua são
