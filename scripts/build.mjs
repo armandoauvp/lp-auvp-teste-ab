@@ -41,6 +41,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { injectDir } from "./lib/snippets.mjs";
+import { arquivosSeo } from "./lib/seo.mjs";
 import {
   canonical,
   validarExperimentos,
@@ -251,6 +252,16 @@ if (process.env.SITE_INDEXAVEL !== "true") {
     "# Homologação: nada aqui deve ser indexado.\nUser-agent: *\nDisallow: /\n",
   );
   console.log(`noindex aplicado em ${paginas.length} páginas (homologação)`);
+} else if (siteUrl) {
+  // Produção: robots.txt, llms.txt e sitemaps da raiz, como o Amplify servia. Sem eles, na AWS
+  // esses caminhos cairiam na home. Um arquivo da própria raiz (se existir) prevalece.
+  for (const [nome, conteudo] of Object.entries(arquivosSeo(siteUrl))) {
+    await writeFile(path.join(dist, nome), conteudo, { flag: "wx" }).catch(
+      (e) => {
+        if (e.code !== "EEXIST") throw e;
+      },
+    );
+  }
 }
 
 // Script global em todo HTML do build: acrescenta versao_pagina (a ou b) aos
