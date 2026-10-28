@@ -251,6 +251,16 @@ if (process.env.SITE_INDEXAVEL !== "true") {
     "# Homologação: nada aqui deve ser indexado.\nUser-agent: *\nDisallow: /\n",
   );
   console.log(`noindex aplicado em ${paginas.length} páginas (homologação)`);
+} else if (siteUrl) {
+  // Produção: libera tudo e aponta para o sitemap do institucional. Sem isto, na AWS o
+  // /robots.txt cai na home. Um robots.txt da própria raiz (se existir) prevalece.
+  await writeFile(
+    path.join(dist, "robots.txt"),
+    `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/institucional/sitemap.xml\n`,
+    { flag: "wx" },
+  ).catch((e) => {
+    if (e.code !== "EEXIST") throw e;
+  });
 }
 
 // Script global em todo HTML do build: acrescenta versao_pagina (a ou b) aos
