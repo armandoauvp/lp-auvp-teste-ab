@@ -1462,6 +1462,9 @@ details[open] p { max-height: 1000px; opacity: 1; transform: translateY(0); tran
 /* A arte dos ETFs é a screenshot da página inteira, não uma capa: mostra o
    topo, como a Central faz com screenshots de LP. */
 .news-card-img--topo { object-position: top; }
+/* Screenshot de produto com o nome no canto: em quadro mais estreito, corta
+   pela direita e o logo do produto continua à vista. */
+.news-card-img--esquerda { object-position: left top; }
 /* Capa tipográfica para novidade que ainda não tem arte: o nome em Anek
    Latin dourada sobre tinta. Mesmo tamanho da imagem (.news-card-img). */
 .news-card-capa {
