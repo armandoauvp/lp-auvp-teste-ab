@@ -19,6 +19,9 @@ permissions:
 env:
   SITE_NAME: lp-auvp
   AWS_ACCOUNT_ID: "562721540720"
+  # Produção: www é o endereço principal (canonical, sitemap, robots); o apex redireciona para ele.
+  SITE_URL: https://www.auvp.com.br
+  SITE_INDEXAVEL: "true"
 
 concurrency:
   group: deploy-aws

@@ -2,6 +2,9 @@ function handler(event) {
   var request = event.request;
   var uri = request.uri;
 
+  var toWww = wwwRedirect(request);
+  if (toWww) return toWww;
+
   var moved = redirectFor(uri, request);
   if (moved) return moved;
 

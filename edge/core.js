@@ -62,6 +62,14 @@ function redirect(location, status) {
   };
 }
 
+// Endereço sem www (auvp.com.br) vai para o principal (www.auvp.com.br), mantendo caminho e query.
+// WWW_HOST vazio desliga o redirect. Outros hosts (prod.*, *.cloudfront.net) passam intactos.
+function wwwRedirect(request) {
+  var h = request.headers.host;
+  if (!WWW_HOST || !h || h.value !== WWW_HOST.slice(4)) return null;
+  return redirect("https://" + WWW_HOST + request.uri + queryString(request));
+}
+
 // REDIRECTS: caminho exato -> [destino, status].
 // PREFIXES: tudo que vem depois do prefixo -> [destino, status].
 function redirectFor(uri, request) {

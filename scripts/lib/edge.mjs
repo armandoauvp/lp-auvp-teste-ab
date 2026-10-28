@@ -30,7 +30,13 @@ export function redirectsFrom(vercel) {
   return { exatos, prefixos };
 }
 
-export function buildEdge({ tests, redirects }) {
+// SITE_URL com host "www.…" liga o redirect do endereço sem www para ele.
+export function wwwHostDe(siteUrl) {
+  const host = siteUrl ? new URL(siteUrl).hostname : "";
+  return host.startsWith("www.") ? host : "";
+}
+
+export function buildEdge({ tests, redirects, wwwHost = "" }) {
   const tabela = tests.map((t) => ({
     id: t.id,
     page: t.page,
@@ -41,7 +47,8 @@ export function buildEdge({ tests, redirects }) {
   const config =
     `var TESTS = ${JSON.stringify(tabela)};\n` +
     `var REDIRECTS = ${JSON.stringify(redirects.exatos)};\n` +
-    `var PREFIXES = ${JSON.stringify(redirects.prefixos)};\n`;
+    `var PREFIXES = ${JSON.stringify(redirects.prefixos)};\n` +
+    `var WWW_HOST = ${JSON.stringify(wwwHost)};\n`;
   const core = readFileSync(resolve(edgeDir, "core.js"), "utf8");
   const out = {};
   for (const name of ["request", "response"]) {

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import vm from "node:vm";
 import { createRequire } from "node:module";
 import { randomBytes } from "node:crypto";
-import { buildEdge, redirectsFrom } from "./lib/edge.mjs";
+import { buildEdge, redirectsFrom, wwwHostDe } from "./lib/edge.mjs";
 
 const require = createRequire(import.meta.url);
 const redirects = {
@@ -11,10 +11,11 @@ const redirects = {
   prefixos: { "/escola/": ["/", 302] },
 };
 
-function load(split = { a: 50, b: 50 }, cookieDays) {
+function load(split = { a: 50, b: 50 }, cookieDays, wwwHost) {
   const code = buildEdge({
     tests: [{ id: "sempre-titulo", page: "/auvp-sempre/", split, cookieDays }],
     redirects,
+    wwwHost,
   });
   const run = (src) => vm.runInNewContext(`${src}\nhandler`, { require });
   return { request: run(code.request), response: run(code.response), code };
@@ -300,4 +301,39 @@ test("teste na página inicial: a B é /b.html, a URL do visitante continua /", 
   assert.equal(res.headers["x-ab"].value, "escola-institucional:b");
   const primeira = serve(fns, req("/"), "abc");
   assert.ok(primeira.cookies["ab_escola-institucional"]);
+});
+
+test("www principal: auvp.com.br vai para www.auvp.com.br (301), com caminho e query", () => {
+  const { request } = load(undefined, undefined, "www.auvp.com.br");
+  const r = req("/auvp-sempre/", { qs: { utm_source: "x" } });
+  r.headers.host = { value: "auvp.com.br" };
+  const out = request(ev(r));
+  assert.equal(out.statusCode, 301);
+  assert.equal(
+    out.headers.location.value,
+    "https://www.auvp.com.br/auvp-sempre/?utm_source=x",
+  );
+});
+
+test("www principal: www, prod.* e cloudfront.net passam; sem wwwHost nada redireciona", () => {
+  const { request } = load(undefined, undefined, "www.auvp.com.br");
+  for (const host of [
+    "www.auvp.com.br",
+    "prod.auvp.com.br",
+    "d1gaqth6af57nh.cloudfront.net",
+  ]) {
+    const r = req("/auvp-sempre/");
+    r.headers.host = { value: host };
+    assert.equal(request(ev(r)).uri, "/auvp-sempre/index.html", host);
+  }
+  const sem = load().request;
+  const r = req("/");
+  r.headers.host = { value: "auvp.com.br" };
+  assert.equal(sem(ev(r)).uri, "/index.html");
+});
+
+test("wwwHostDe: só host com www liga o redirect", () => {
+  assert.equal(wwwHostDe("https://www.auvp.com.br"), "www.auvp.com.br");
+  assert.equal(wwwHostDe("https://auvp.com.br"), "");
+  assert.equal(wwwHostDe(undefined), "");
 });
