@@ -337,24 +337,3 @@ test("wwwHostDe: só host com www liga o redirect", () => {
   assert.equal(wwwHostDe("https://auvp.com.br"), "");
   assert.equal(wwwHostDe(undefined), "");
 });
-
-test("response: arquivo inexistente que cai na home vira 404; páginas e arquivos reais não", () => {
-  const fns = load();
-  const html = () => ({
-    statusCode: 200,
-    headers: { "content-type": { value: "text/html" } },
-    cookies: {},
-  });
-  const status = (uri, res) =>
-    fns.response(ev(req(uri), "req-1", res)).statusCode;
-  for (const uri of ["/robots.txt", "/llms.txt", "/assets/x.js", "/a/b.xml"])
-    assert.equal(status(uri, html()), 404, uri);
-  for (const uri of ["/index.html", "/planos/index.html", "/b.html"])
-    assert.equal(status(uri, html()), 200, uri);
-  const txt = {
-    statusCode: 200,
-    headers: { "content-type": { value: "text/plain" } },
-    cookies: {},
-  };
-  assert.equal(status("/institucional/robots.txt", txt), 200);
-});

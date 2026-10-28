@@ -137,9 +137,12 @@ no repositório (**Settings → Secrets and variables → Actions → Variables*
   `sitemap_index.xml`, `llms.txt`...). Decisão de 27/10/2026: se o Amplify
   precisar voltar, os arquivos antigos são enviados de novo ao bucket. O Amplify
   só enxerga a mudança no próximo deploy dele.
-- **Endereço que não existe** mostra a página inicial com status 200 e a URL
-  mantida, como no Amplify (o site não tem `404.html`). Para responder 404 com a
-  home, troque `response_code` nos dois `custom_error_response` do Terraform.
+- **Endereço que não existe** mostra a página inicial, com a URL mantida e **status
+  404** (o site não tem `404.html`). O 404 vem dos `custom_error_response` do
+  Terraform (S3 responde 403/404): as funções de borda não rodam nessa resposta, então
+  o status não pode ser trocado por elas. Assim buscadores descartam as URLs antigas do
+  WordPress e arquivos como `/llms.txt` não parecem existir. Para responder 200 em vez
+  de 404, troque `response_code` nos dois blocos.
 
 ---
 
