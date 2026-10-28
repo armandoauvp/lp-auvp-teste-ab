@@ -1,17 +1,15 @@
 // Arquivos de SEO da raiz em produção, espelhando os que o Amplify (WordPress/Yoast) servia:
 // llms.txt, sitemap_index.xml (e sitemap.xml, igual) e page-sitemap.xml. Aqui com URLs absolutas.
 
-// As mesmas páginas do page-sitemap.xml antigo (conferido em 28/10/2026).
+// As páginas do page-sitemap.xml antigo (conferido em 28/10/2026), sem as de obrigado (noindex).
 export const PAGINAS = [
   "/",
   "/resolva-aqui/",
   "/politica-de-privacidade/",
-  "/obrigado-auvp-analitica/",
   "/quem-somos/",
   "/auvp-internacional/",
   "/termos-de-uso/",
   "/nosso-processo/",
-  "/obrigado-aprovado/",
 ];
 
 const TITULO = "AUVP - A maior escola de investimentos do Brasil";

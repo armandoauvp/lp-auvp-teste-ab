@@ -42,3 +42,7 @@ test("llms.txt lista as páginas institucionais com o domínio novo", () => {
   );
   assert.doesNotMatch(arquivos["llms.txt"], /prod\.auvp|Yoast/);
 });
+
+test("páginas de obrigado ficam fora do sitemap", () => {
+  assert.doesNotMatch(arquivos["page-sitemap.xml"], /obrigado/);
+});
