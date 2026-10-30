@@ -1,0 +1,275 @@
+/*
+ * AUVP Sempre: popup de tela cheia com a oferta.
+ *
+ * Usa o <dialog> nativo (aberto com showModal): o navegador cuida do foco
+ * preso dentro dele, do Esc e de deixar a página de trás inerte. Este arquivo
+ * só desenha. Quem abre e fecha é o popup.js. Prévia em /auvp-sempre/popup/.
+ */
+
+.popup-sempre {
+  /* O <dialog> vem com margem, borda e tamanho máximo do navegador. */
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--black) url("img/hero-desktop.webp") 100% 50% / cover
+    no-repeat;
+  color: var(--paper);
+  font-family: var(--font);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.popup-sempre::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.popup-sempre[open] {
+  display: flex;
+  animation: popup-sempre-entra 0.35s ease-out;
+}
+
+@keyframes popup-sempre-entra {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Enquanto o popup está aberto, a página de trás não rola. */
+html.popup-sempre-aberto {
+  overflow: hidden;
+}
+
+.popup-sempre__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  width: min(100% - 32px, var(--container));
+  min-height: 100%;
+  margin-inline: auto;
+  padding-block: 88px 48px;
+}
+
+.popup-sempre__copy {
+  max-width: 600px;
+}
+
+/* Recebe o foco quando o popup abre (autofocus), para o leitor de tela
+   começar pelo texto e o X não abrir já destacado. */
+.popup-sempre__copy:focus {
+  outline: none;
+}
+
+.popup-sempre__eyebrow {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--yellow);
+}
+
+.popup-sempre__title {
+  margin-top: 16px;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.popup-sempre__lead {
+  margin-top: 20px;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #d6d6d6;
+}
+
+/* ---------------------------------------------------------------- planos */
+
+.popup-sempre__plans {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 300px));
+  gap: 16px;
+}
+
+.popup-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius);
+  background: rgba(20, 20, 20, 0.78);
+  backdrop-filter: blur(6px);
+}
+
+.popup-plan--featured {
+  border-color: var(--yellow);
+}
+
+.popup-plan__badge {
+  align-self: flex-start;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--yellow);
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 2.5px;
+}
+
+.popup-plan__name {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.popup-plan__price {
+  margin-top: 6px;
+  white-space: nowrap;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.popup-plan__price small {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.popup-plan__detail {
+  min-height: 1.5em;
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: #c9c9c9;
+}
+
+.popup-plan .btn {
+  /* Encosta no pé do card: os dois botões ficam na mesma linha. */
+  margin-top: auto;
+  padding-inline: 16px;
+  font-size: 14px;
+}
+
+.popup-plan--featured .btn {
+  border-color: var(--yellow);
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.popup-plan--featured .btn:hover {
+  border-color: var(--paper);
+  background: var(--paper);
+}
+
+/* --------------------------------------------------------------- rodapé */
+
+.popup-sempre__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+}
+
+.popup-sempre__note {
+  font-size: 14px;
+  color: #a8a8a8;
+}
+
+.popup-sempre__dismiss {
+  padding: 8px 0;
+  border: 0;
+  background: none;
+  color: var(--paper);
+  font: inherit;
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.popup-sempre__close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--paper);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.popup-sempre__close:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.popup-sempre__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---------------------------------------------------------------- celular */
+
+@media (max-width: 767px) {
+  .popup-sempre {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+      url("img/hero-mobile.webp");
+    background-position: 50% 0;
+  }
+
+  .popup-sempre__inner {
+    justify-content: flex-start;
+    gap: 24px;
+    padding-block: 80px 32px;
+  }
+
+  .popup-sempre__eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .popup-sempre__title {
+    font-size: 32px;
+  }
+
+  .popup-sempre__lead {
+    font-size: 17px;
+  }
+
+  .popup-sempre__plans {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .popup-plan {
+    padding: 20px;
+  }
+
+  .popup-plan__price {
+    font-size: 34px;
+  }
+
+  /* No celular o conteúdo rola; preso no canto, o X ficaria por cima do
+     título. Ele sobe junto, e o "Agora não" fecha no fim da rolagem. */
+  .popup-sempre__close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popup-sempre[open] {
+    animation: none;
+  }
+}

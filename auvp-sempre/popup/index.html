@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prévia do popup - AUVP Sempre</title>
+    <!-- Página de prévia: fora do índice e sem GTM, para não sujar os dados. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="../img/favicon.png" type="image/png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@300;400;500;600;700&family=Sora:wght@600&display=swap"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../popup.css" />
+    <style>
+      /* Só da prévia: a página da AUVP Sempre atrás do popup. */
+      .previa-fundo {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .previa-reabrir {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 10;
+        background: var(--black);
+        color: var(--paper);
+      }
+    </style>
+    <script src="../popup.js" defer></script>
+  </head>
+  <body>
+    <iframe
+      class="previa-fundo"
+      src="../"
+      title="Página da AUVP Sempre, atrás do popup"
+    ></iframe>
+    <button
+      class="btn btn--light previa-reabrir"
+      type="button"
+      onclick="window.popupSempre && window.popupSempre.abrir('previa')"
+    >
+      VER O POPUP DE NOVO
+    </button>
+
+    <!-- ============ POPUP (este bloco vai para o index.html) ============ -->
+    <dialog
+      id="popup-sempre"
+      class="popup-sempre"
+      aria-labelledby="popup-sempre-titulo"
+      aria-describedby="popup-sempre-texto"
+      data-popup-sempre-auto
+    >
+      <button
+        class="popup-sempre__close"
+        type="button"
+        data-popup-fechar="x"
+        aria-label="Fechar"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+
+      <div class="popup-sempre__inner">
+        <div class="popup-sempre__copy" tabindex="-1" autofocus>
+          <p class="popup-sempre__eyebrow">EXCLUSIVO PARA ALUNOS AUVP ESCOLA</p>
+          <h2 id="popup-sempre-titulo" class="popup-sempre__title">
+            O mercado não para.<br />
+            Sua evolução também não precisa parar.
+          </h2>
+          <p id="popup-sempre-texto" class="popup-sempre__lead">
+            Com a AUVP Sempre você continua com as aulas atualizadas da Escola,
+            a comunidade exclusiva, as atualizações semanais de mercado e as
+            ferramentas da AUVP, além dos novos módulos exclusivos.
+          </p>
+        </div>
+
+        <div class="popup-sempre__plans">
+          <article class="popup-plan popup-plan--featured">
+            <p class="popup-plan__badge">MAIS POPULAR</p>
+            <h3 class="popup-plan__name">PLANO ANUAL</h3>
+            <p class="popup-plan__price">R$ 45,74<small> /mês</small></p>
+            <p class="popup-plan__detail">
+              R$ 548,90 por ano, com 1 mês grátis
+            </p>
+            <a
+              class="btn btn--block"
+              data-popup-plano="anual"
+              href="https://clkdmg.site/subscribe/auvp-sempre-anual?utm_source=lp&amp;utm_medium=organico&amp;utm_content=popup-anual&amp;utm_campaign=auvp-sempre-anual"
+              >ASSINAR O PLANO ANUAL</a
+            >
+          </article>
+
+          <article class="popup-plan">
+            <h3 class="popup-plan__name">PLANO MENSAL</h3>
+            <p class="popup-plan__price">R$ 49,90<small> /mês</small></p>
+            <p class="popup-plan__detail">Pagamento mês a mês</p>
+            <a
+              class="btn btn--light btn--block"
+              data-popup-plano="mensal"
+              href="https://clkdmg.site/subscribe/auvp-sempre-mensal?utm_source=lp&amp;utm_medium=organico&amp;utm_content=popup-mensal&amp;utm_campaign=auvp-sempre-mensal"
+              >ASSINAR O PLANO MENSAL</a
+            >
+          </article>
+        </div>
+
+        <div class="popup-sempre__foot">
+          <button
+            class="popup-sempre__dismiss"
+            type="button"
+            data-popup-fechar="agora-nao"
+          >
+            Agora não, quero ver a página
+          </button>
+          <p class="popup-sempre__note">
+            Somente cartão de crédito, com renovação automática.
+          </p>
+        </div>
+      </div>
+    </dialog>
+    <!-- ================================================================== -->
+  </body>
+</html>
