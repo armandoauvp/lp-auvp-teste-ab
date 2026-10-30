@@ -54,10 +54,12 @@ export const etfs: Etf[] = [
   },
   {
     ticker: "AREA11",
-    category: "Fundos Imobiliários",
+    // Renda fixa, não FII: replica o Teva ITBR IPCA Rendimento, carteira de
+    // NTN-B (página do fundo no BTG Pactual, out/2026).
+    category: "Renda Fixa · Inflação",
     accentClass: "text-etf-area11",
     description:
-      "Alocação organizada em fundos imobiliários, com foco em distribuição de renda mensal.",
+      "Títulos do Tesouro atrelados ao IPCA (NTN-B), com foco em distribuição de renda mensal.",
     href: links.etfs,
   },
   {
