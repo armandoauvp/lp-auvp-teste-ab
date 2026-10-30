@@ -650,16 +650,24 @@ ul[role="list"] {
 
 /* -------------------------------------------------------------- planos */
 
+/*
+ * Os dois cards lado a lado em duas linhas compartilhadas (subgrid): o topo
+ * escuro tem a mesma altura nos dois, mesmo com o selo "Mais popular" só no
+ * anual, e os cards terminam juntos, com o botão no pé. Sem isso o mensal
+ * ficava mais baixo e mais curto que o anual.
+ */
 .plan-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px;
-  align-items: start;
+  grid-template-rows: auto 1fr;
+  column-gap: 32px;
+  row-gap: 0;
 }
 
 .plan {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
   border: 2px solid transparent;
   border-radius: var(--radius);
   background: var(--mist);
@@ -671,6 +679,7 @@ ul[role="list"] {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  justify-content: center;
   padding: 36px 24px 32px;
   background: var(--graphite);
   color: var(--paper);
@@ -747,6 +756,12 @@ ul[role="list"] {
   font-weight: 600;
 }
 
+/* O botão e a nota descem para o pé do card: os botões dos dois planos
+   ficam na mesma linha, mesmo com listas de tamanhos diferentes. */
+.plan__body .btn {
+  margin-top: auto;
+}
+
 .plan__note {
   color: #595959;
   font-size: 14px;
@@ -754,8 +769,17 @@ ul[role="list"] {
 }
 
 @media (max-width: 767px) {
+  /* Um embaixo do outro: cada card volta a ter a altura do próprio conteúdo. */
   .plan-grid {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
+    row-gap: 32px;
+  }
+
+  .plan {
+    display: flex;
+    flex-direction: column;
+    grid-row: auto;
   }
 
   .plan__body {

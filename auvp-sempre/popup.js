@@ -1,5 +1,9 @@
 /*
- * AUVP Sempre: popup de tela cheia com a oferta.
+ * AUVP Sempre: popup de tela cheia que chama para a AUVP Escola.
+ *
+ * A Sempre só é vendida para quem já é aluno da Escola. Quem chega na página
+ * sem ser aluno recebe o popup com o caminho certo: a Escola. Quem já é aluno
+ * fecha pelo "Já sou aluno" e segue na página.
  *
  * Gatilhos:
  * - Qualquer elemento com `data-popup-sempre-gatilho="<nome>"` abre o popup
@@ -73,10 +77,10 @@
       fechar(fecha.getAttribute("data-popup-fechar"));
       return;
     }
-    var plano = event.target.closest("[data-popup-plano]");
-    if (plano) {
+    var cta = event.target.closest("[data-popup-cta]");
+    if (cta) {
       registrar("popup_sempre_clique", {
-        popup_plano: plano.getAttribute("data-popup-plano"),
+        popup_cta: cta.getAttribute("data-popup-cta"),
       });
     }
   });
