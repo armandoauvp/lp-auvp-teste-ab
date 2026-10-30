@@ -78,59 +78,68 @@
 
       <div class="popup-sempre__inner">
         <div class="popup-sempre__copy" tabindex="-1" autofocus>
-          <p class="popup-sempre__eyebrow">EXCLUSIVO PARA ALUNOS AUVP ESCOLA</p>
+          <p class="popup-sempre__eyebrow">AINDA NÃO É ALUNO DA AUVP ESCOLA?</p>
           <h2 id="popup-sempre-titulo" class="popup-sempre__title">
-            O mercado não para.<br />
-            Sua evolução também não precisa parar.
+            Do zero a investidor<br />
+            em 8 semanas.
           </h2>
           <p id="popup-sempre-texto" class="popup-sempre__lead">
-            Com a AUVP Sempre você continua com as aulas atualizadas da Escola,
-            a comunidade exclusiva, as atualizações semanais de mercado e as
-            ferramentas da AUVP, além dos novos módulos exclusivos.
+            A AUVP Sempre é a continuação da AUVP Escola e só fica disponível
+            para quem já é aluno. O caminho começa pela Escola.
           </p>
         </div>
 
-        <div class="popup-sempre__plans">
-          <article class="popup-plan popup-plan--featured">
-            <p class="popup-plan__badge">MAIS POPULAR</p>
-            <h3 class="popup-plan__name">PLANO ANUAL</h3>
-            <p class="popup-plan__price">R$ 45,74<small> /mês</small></p>
-            <p class="popup-plan__detail">
-              R$ 548,90 por ano, com 1 mês grátis
-            </p>
-            <a
-              class="btn btn--block"
-              data-popup-plano="anual"
-              href="https://clkdmg.site/subscribe/auvp-sempre-anual?utm_source=lp&amp;utm_medium=organico&amp;utm_content=popup-anual&amp;utm_campaign=auvp-sempre-anual"
-              >ASSINAR O PLANO ANUAL</a
+        <ul class="popup-sempre__pontos" role="list">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            <span><strong>+100 aulas</strong> do zero ao avançado</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            <span
+              ><strong>Comunidade</strong> com mais de 35 mil alunos
+              ativos</span
             >
-          </article>
-
-          <article class="popup-plan">
-            <h3 class="popup-plan__name">PLANO MENSAL</h3>
-            <p class="popup-plan__price">R$ 49,90<small> /mês</small></p>
-            <p class="popup-plan__detail">Pagamento mês a mês</p>
-            <a
-              class="btn btn--light btn--block"
-              data-popup-plano="mensal"
-              href="https://clkdmg.site/subscribe/auvp-sempre-mensal?utm_source=lp&amp;utm_medium=organico&amp;utm_content=popup-mensal&amp;utm_campaign=auvp-sempre-mensal"
-              >ASSINAR O PLANO MENSAL</a
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            <span
+              ><strong>Aprendizado garantido</strong> ou 100% do seu dinheiro de
+              volta</span
             >
-          </article>
-        </div>
+          </li>
+        </ul>
 
-        <div class="popup-sempre__foot">
-          <button
-            class="popup-sempre__dismiss"
-            type="button"
-            data-popup-fechar="agora-nao"
+        <div class="popup-sempre__acoes">
+          <a
+            class="btn popup-sempre__cta"
+            data-popup-cta="analise-de-perfil"
+            href="https://form.auvp.com.br/to/DSo4JgH8"
+            >FAÇA SUA ANÁLISE DE PERFIL</a
           >
-            Agora não, quero ver a página
-          </button>
-          <p class="popup-sempre__note">
-            Somente cartão de crédito, com renovação automática.
-          </p>
+          <!-- Na prévia a raiz fica dois níveis acima; no index.html da
+               Sempre, um só: lá este href vira "../". -->
+          <a
+            class="btn btn--light"
+            data-popup-cta="conhecer-escola"
+            href="../../"
+            >CONHECER A AUVP ESCOLA</a
+          >
         </div>
+
+        <button
+          class="popup-sempre__dismiss"
+          type="button"
+          data-popup-fechar="ja-sou-aluno"
+        >
+          Já sou aluno da Escola, quero ver a AUVP Sempre
+        </button>
       </div>
     </dialog>
     <!-- ================================================================== -->
