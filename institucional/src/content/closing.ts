@@ -29,7 +29,8 @@ export const closing = {
     source:
       "https://n8n.prod.asupernova.com.br/webhook/f502121b-8208-431e-8e6b-c138831291fb" as
         string | null,
-    target: "2026-10-30T19:00:00-03:00" as string | null,
+    // Reserva temporária.
+    target: "2026-11-27T19:00:00-03:00" as string | null,
     /**
      * Como a turma se chama: "126", "de outubro", "2026.2". Entra no meio do
      * rótulo, que fica "Inscrições para a turma 126 encerram em".
@@ -40,7 +41,7 @@ export const closing = {
      * que é o que está no ar hoje. Prazo sem dono é melhor do que prazo com o
      * nome errado.
      */
-    turma: "62" as string | null,
+    turma: "63" as string | null,
   },
   title: "A formação começa por uma conversa honesta sobre o seu momento.",
   ctaLabel: "Faça sua Análise de Perfil",
